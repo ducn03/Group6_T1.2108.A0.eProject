@@ -5,7 +5,7 @@ nav
 }
 nav li div
 {
-    margin-left:300px;
+    margin-left:270px;
 }
 nav li form
 {
@@ -14,6 +14,10 @@ nav li form
 body
 {
     background-color: #343a40!important;
+}
+p
+{
+    width: 200px;
 }
 
 
