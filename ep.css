@@ -3,9 +3,14 @@ nav
 {
     background-color: #030321;
 }
-nav li div
+div.dropdown
 {
-    margin-left:270px;
+    position:absolute;
+    right: 35px;
+}
+nav.black
+{
+    background-color: #030321;
 }
 nav li form
 {
@@ -79,3 +84,11 @@ svg {
 @keyframes stroke-offset{
 	100% {stroke-dashoffset: -35%;}
 }
+@media screen and (max-width:500px)
+        {
+        p a
+        {
+            list-style-type: none;
+            width: 100%; 
+        }
+    }
