@@ -11,9 +11,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-<body>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+  
     <nav class="navbar navbar-expand-sm navbar-dark">
-    <a class="navbar-brand" href="#"><svg viewBox="0 0 960 300">
+    <a class="navbar-brand" href="#!"><svg viewBox="0 0 960 300">
           <symbol id="s-text">
             <text text-anchor="middle" x="50%" y="80%">CONVERSION</text>
           </symbol>
@@ -31,7 +33,7 @@
               <a class="nav-link" href="#!">Information</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#!Student">Fact Question</a>
+              <a class="nav-link" href="#!Faq">Fact Question</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#!Add">History</a>
@@ -42,24 +44,62 @@
                     <button class="btn btn-success" type="submit">Search</button>
                   </form>
             </li>
-            <li>
-                <div class="dropdown">
-                    <button type="button" class="btn btn-success" data-toggle="dropdown">
-                      List conversion
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Area</a>
-                      <a class="dropdown-item" href="#">Length</a>
-                      <a class="dropdown-item" href="#">Volume</a>
-                      <a class="dropdown-item" href="#">Mass</a>
-                      <a class="dropdown-item" href="#">Temperature</a>
-                      <a class="dropdown-item" href="#">Currency</a>
-                </div>
-            </li>
           </ul>
-        </nav>
         
-        
+        <div class="dropdown">
+          <button type="button" class="btn btn-success" data-toggle="dropdown">
+            List conversion
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#!Area">Area</a>
+            <a class="dropdown-item" href="#">Length</a>
+            <a class="dropdown-item" href="#">Volume</a>
+            <a class="dropdown-item" href="#">Mass</a>
+            <a class="dropdown-item" href="#">Temperature</a>
+            <a class="dropdown-item" href="#">Currency</a>
+      </div>
+    </nav>
+    <div class='lentop'>
+      <div>
+      <img src='top.png'/>
+      </div>
+      </div>
+
+        <div ng-view></div>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-route.js"></script>
+        <script>
+            var app = angular.module("myApp", ["ngRoute"]);
+            app.controller("myCtrl", function ($scope) {
+    
+            });
+            app.config(function ($routeProvider) {
+                $routeProvider
+                    .when("/", {
+                        templateUrl: "home.html"
+                    })
+                    .when("/Area", {
+                        templateUrl: "area.html",
+                    })
+                    .when("/Faq", {
+                        templateUrl: "faq.html",
+                    })
+                    .when("/About", {
+                        templateUrl: "about.html"
+                    });
+                  });
+
+              $(function(){
+              $(window).scroll(function () {
+          if ($(this).scrollTop() > 100) $(".lentop").fadeIn();
+         else $(".lentop").fadeOut();
+        });
+              $(".lentop").click(function () {
+              $("body,html").animate({scrollTop: 0}, "slow");
+            });
+          });
+                </script>
             
 </body>
 </html>
