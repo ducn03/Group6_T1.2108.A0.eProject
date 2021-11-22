@@ -65,6 +65,7 @@ a.nav-link, a.nav-link:hover
   outline-color: rgba(255, 255, 255, 0);
   outline-offset: 15px;
   text-shadow: 1px 1px 2px #427388;
+  font-size: large;
 }
 .r
 {
@@ -87,6 +88,7 @@ a.nav-link, a.nav-link:hover
   outline-color: rgba(255, 255, 255, 0);
   outline-offset: 15px;
   text-shadow: 1px 1px 2px #427388;
+  font-size: larger;
 
 }
 
