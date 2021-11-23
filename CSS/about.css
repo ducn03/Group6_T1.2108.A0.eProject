@@ -1,14 +1,14 @@
-h1
+em h1
 {
     color: lightgrey;
     text-align: center;
     
 }
-h2
+em h2
 {
     text-align: center;
 }
-pre h3
+em pre h3
 {
     border: solid;
     text-align: center;
