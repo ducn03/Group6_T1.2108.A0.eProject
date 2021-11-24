@@ -8,47 +8,130 @@
     <link rel="stylesheet" href="CSS/list.css">
     <link rel="stylesheet" href="CSS/about.css">
     <link rel="stylesheet" href="CSS/eProjectTest.css">
-    <link rel="stylesheet" href="CSS/faq.css">
-    <link rel="stylesheet" href="CSS/contact.css">
+    <link rel="stylesheet" href="CSS/lognin.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 </head>
-<body ng-app="myApp" ng-controller="myCtrl">
+<body>
 
     <nav class="navbar navbar-expand-sm ">
         <ul class="navbar-nav">
           <li class="nav-item">
             <div class="l">
-            <a class="nav-link" href="#!Faq">FAQ</a>
+            <a class="nav-link" href="faq.html">FAQ</a>
             </div>
           </li>
-            <li>
-                <div class="word">
-                  <span>C</span>
-                  <span>o</span>
-                  <span>n</span>
-                  <span>v</span>
-                  <span>e</span>
-                  <span>r</span>
-                  <span>s</span>
-                  <span>i</span>
-                  <span>o</span>
-                  <span>n</span>
-                </div>
-            </li>
+          <li>
+            <div class="bubbles">
+            <h1 class="h"><a href="eProjectTest.html">Conversion</a></h1>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="r1">
+              <button class="r1" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+            </div>
+          </li>
             <li class="nav-item">
               <div class="r">
-              <a class="nav-link" href="#!Ctu">CONTACT US</a>
+              <a class="nav-link" href="contact.html">CONTACT US</a>
               </div>
             </li>
           </ul>
     </nav>
-    
 
-    <div ng-view></div>
+    <br> <br> <br> <br> <br>
+
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="img/conversion.jpg" alt="Avatar" class="avatar" width="200px" height="200px">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+    
+<div class="slideshow-container">
+
+  <div class="mySlides fade">
+    <img src="img/length.jpg" style="width:100%">
+    <div class="text" style="color: blue">Lenght Conversion </div>
+  </div>
+  
+  <div class="mySlides fade">
+    <img src="img/Currency.jpg" style="width:100%">
+    <div class="text" style="color: blue">Currency Conversion </div>
+  </div>
+  
+  <div class="mySlides fade">
+    <img src="img/area.png" style="width:100%">
+    <div class="text" style="color: blue">Area Conversion </div>
+  </div>
+  
+  <div class="mySlides fade">
+    <img src="img/mass.png" style="width:100%">
+    <div class="text" style="color: blue">Mass Conversion </div>
+  </div>
+
+  <div class="mySlides fade">
+    <img src="img/Volume.jpg" style="width:100%">
+    <div class="text" style="color: blue">Volume Conversion </div>
+  </div>
+  
+  <div class="mySlides fade">
+    <img src="img/Temperature.png" style="width:100%">
+    <div class="text" style="color: blue">Temperature Conversion </div>
+  </div>
+
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  
+  </div>
+  <br>
+  
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span> 
+    <span class="dot" onclick="currentSlide(2)"></span> 
+    <span class="dot" onclick="currentSlide(3)"></span> 
+    <span class="dot" onclick="currentSlide(4)"></span> 
+    <span class="dot" onclick="currentSlide(5)"></span> 
+    <span class="dot" onclick="currentSlide(6)"></span> 
+  </div>
+  
+  <script src="JS/carousel.js"></script>
+  <hr>
+  <h1>ABOUT US</h1>
+  <h2>We created this converter to create an accurate measure for users to use or learn more about how to convert</h2>
+  <pre>
+    <h3>Email: fptaptech@gmail.com                                         Tel:0123456789</h3>        
+  </pre>
+
+  <div id="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3192813592664!2d106.66408561533432!3d10.786840061949743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed2392c44df%3A0xd2ecb62e0d050fe9!2zRlBUIEFwdGVjaCBIQ00gLSBI4buHIFRo4buRbmcgxJDDoG8gVOG6oW8gTOG6rXAgVHLDrG5oIFZpw6puIFF14buRYyBU4bq_IChTaW5jZSAxOTk5KQ!5e0!3m2!1svi!2s!4v1637573287881!5m2!1svi!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+    
     <div class='lentop'>
       <div>
       <img src='img/top.png'/>
@@ -56,33 +139,10 @@
       </div>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-route.js"></script>
-        <script>
-            var app = angular.module("myApp", ["ngRoute"]);
-            app.controller("myCtrl", function ($scope) {
-    
-            });
-            app.config(function ($routeProvider) {
-                $routeProvider
-                    .when("/", {
-                        templateUrl: "home.html"
-                    })
-                    .when("/Area", {
-                        templateUrl: "area.html",
-                    })
-                    .when("/Faq", {
-                        templateUrl: "faq.html",
-                    })
-                    .when("/Ctu", {
-                        templateUrl: "contact.html"
-                    });
-                  });
-
-                </script>
+        
                 <script src="JS/up.js"></script>
                 <script src="JS/label.js"></script>
-                <script src="JS/contact.js"></script>
+                <script href="JS/lognin.js"></script>
                 
-            
 </body>
 </html>
