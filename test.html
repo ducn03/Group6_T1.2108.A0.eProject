@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div
+        {
+            border: 1px solid;
+            width: 420px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body ng-app = "myApp" ng-controller="myController">
+        <h1 style="text-align: center; color: lightblue;">Event Handing</h1>
+    <div>
+        <h1>Event</h1>
+        New Members:
+        <input type="text" ng-model="m"> <br> <br>
+        Registration Fees:
+        
+        <input type="text" ng-model="ft" value="{{tong}}" disabled>
+        <button ng-click="count()">Calculate</button>
+        <h4>Total Amount: {{tong}} </h4>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script>
+        var app = angular.module('myApp', []); 
+    app.controller("myController", function($scope){
+    $scope.m= $scope.m;
+    $scope.ft=$scope.m*3.2808;
+    $scope.count = function(){
+        $scope.tong = $scope.m*3.2808;
+    }
+    });
+    </script>
+</body>
+</html>
