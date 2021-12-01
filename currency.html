@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="img/conversion.png"/>
+    <title>Conversion</title>
+    <link rel="stylesheet" href="CSS/eProjectTest.css">
+    <link rel="stylesheet" href="CSS/login.css">
+    <link rel="stylesheet" href="CSS/length.css">
+    <link rel="stylesheet" href="CSS/listcvs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+</head>
+<body ng-app="myApp">
+
+  <nav class="navbar navbar-expand-sm ">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <div class="l">
+        <a class="nav-link" href="faq.html">FAQ</a>
+        </div>
+      </li>
+      <li>
+        <div class="bubbles">
+        <h1 class="h"><a href="index.html">Conversion</a></h1>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="r2">
+          <div class="dropdown">
+            <button onclick="hamDropdown()" class="nut_dropdown">List conversion <i style="font-size:24px" class="fa">&#xf0dd;</i></button>
+            <div class="noidung_dropdown">
+              <a href="length.html">Length</a>
+              <a href="area.html">Area</a>
+              <a href="volume.html">Volume</a>
+              <a href="mass.html">Mass</a>
+              <a href="temperature.html">Temperature</a>
+              <a href="currency.html">Currency</a>
+            </div>
+          </div> 
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="r1">
+          <button class="r1" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+        </div>
+      </li>
+        <li class="nav-item">
+          <div class="r">
+          <a class="nav-link" href="contact.html">CONTACT US</a>
+          </div>
+        </li>
+      </ul>
+</nav>
+
+    <br> <br><br> <br> <br>
+
+
+<div id="id01" class="modal">
+  
+ 
+  <form class="modal-content animate" action="" method="post" onsubmit="return validate()">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" class="login" placeholder="Enter Username" name="uname" id="username" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" class="login" placeholder="Enter Password" name="psw" id="password" required>
+        
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+<br>
+<h1 class="fontCon">Currency</h1>
+<div class="cvstb"> 
+<div>
+  select:<select ng-model="mySelect" class="fl4">
+   <option value="q1">Australian dollar</option>
+   <option value="q2">US dollar</option>
+   <option value="q3">Euro</option>
+   <option value="q4">Rupi</option>
+   <option value="q5">VND</option>
+ </select>
+ <div ng-switch="mySelect">
+ <div ng-switch-when="q1">
+  <p class="fl1">
+      <label>AUD:</label>
+      <input id="inputFeet" type="number" placeholder="Australian dollar" oninput="LengthConverterAUD(this.value)" onchange="LengthConverter(this.value)">
+    </p>
+    <div class="fl2">
+       select:&nbsp;&nbsp;<select ng-model="mySelect" class="fl4">
+        <option value="q1">US dollar</option>
+        <option value="q2">Euro</option>
+        <option value="q3">Rupi</option>
+        <option value="q4">VND</option>
+      </select>
+      <div ng-switch="mySelect" class="fl3">
+      <div ng-switch-when="q1"><p>USD: <input type="number" id="outputUSD" disabled></p></div>
+      <div ng-switch-when="q2"><p>EUR: <input type="number" id="outputEuro" disabled></p></div>
+      <div ng-switch-when="q3"><p>INR: <input type="number" id="outputRupi" disabled></p></div>
+      <div ng-switch-when="q4"><p>VND: <input type="number" id="outputVND" disabled></p></div>
+      </div>
+    </div>
+    <div hidden>
+     <p>USD: <span id="outputUSD"></span></p>
+      <p>Euro: <span id="outputEuro"></span></p>
+      <p>Rupi: <span id="outputRupi"></span></p>
+      <p>VND: <span id="outputVND"></span></p>
+    </div>
+ </p></div>
+ <div ng-switch-when="q2"><p>
+    
+    <p class="fl1">
+     <label>USD:</label>
+     <input id="inputFeet" type="number" placeholder="US dollar" oninput="LengthConverterUSD(this.value)" onchange="LengthConverter(this.value)">
+   </p>
+   <div class="fl2a1">
+     &nbsp;&nbsp;select:<select ng-model="mySelect" class="fl4">
+       <option value="q1">Australian dollar</option>
+       <option value="q2">Euro</option>
+       <option value="q3">Rupi</option>
+       <option value="q4">VND</option>
+     </select>
+     <div ng-switch="mySelect" class="fl3">
+     <div ng-switch-when="q1"><p>AUD: <input  type="number" id="outputAUD" disabled></p></div>
+     <div ng-switch-when="q2"><p>EUR: <input type="number" id="outputEuro" disabled></p></div>
+     <div ng-switch-when="q3"><p>INR: <input type="number" id="outputRupi" disabled></p></div>
+     <div ng-switch-when="q4"><p>VND: <input type="number" id="outputVND" disabled></p></div>
+     </div>
+   </div>
+   <div hidden>
+    <p>AUD: <span id="outputAUD"></span></p>
+    <p>Euro: <span id="outputEuro"></span></p>
+    <p>Ruppe: <span id="outputRupi"></span></p>
+    <p>VND: <span id="outputVND"></span></p>
+   </div>
+ 
+
+ </p></div>
+ <div ng-switch-when="q3"><p>
+
+  <p class="fl1">
+    <label>EUR:</label>
+    <input id="inputFeet" type="number" placeholder="Euro" oninput="LengthConverterEUR(this.value)" onchange="LengthConverter(this.value)">
+  </p>
+  <div class="fl2a1">
+    &nbsp;&nbsp;select:<select ng-model="mySelect" class="fl4">
+      <option value="q1">Australian dollar</option>
+      <option value="q2">US dollar</option>
+      <option value="q3">Rupi</option>
+      <option value="q4">VND</option>
+    </select>
+    <div ng-switch="mySelect" class="fl3">
+      <div ng-switch-when="q1"><p>AUD: <input  type="number" id="outputAUD" disabled></p></div>
+      <div ng-switch-when="q2"><p>USD: <input type="number" id="outputUSD" disabled></p></div>
+      <div ng-switch-when="q3"><p>INR: <input type="number" id="outputRupi" disabled></p></div>
+      <div ng-switch-when="q4"><p>VND: <input type="number" id="outputVND" disabled></p></div>
+    </div>
+  </div>
+  <div hidden>
+    <p>AUD: <span id="outputAUD"></span></p>
+    <p>USD: <span id="outputUSD"></span></p>
+    <p>Ruppe: <span id="outputRupi"></span></p>
+    <p>VND: <span id="outputVND"></span></p>
+  </div>
+
+
+ </p></div>
+ <div ng-switch-when="q4"><p>
+  <p class="fl1">
+    <label>INR:</label>
+    <input id="inputFeet" type="number" placeholder="Rupi" oninput="LengthConverterINR(this.value)" onchange="LengthConverter(this.value)">
+  </p>
+  <div class="fl2a1">
+    &nbsp;&nbsp;select:<select ng-model="mySelect" class="fl4">
+      <option value="q1">Australian dollar</option>
+      <option value="q2">US dollar</option>
+      <option value="q3">Euro</option>
+      <option value="q4">VND</option>
+    </select>
+    <div ng-switch="mySelect" class="fl3">
+      <div ng-switch-when="q1"><p>AUD: <input  type="number" id="outputAUD" disabled></p></div>
+      <div ng-switch-when="q2"><p>USD: <input type="number" id="outputUSD" disabled></p></div>
+      <div ng-switch-when="q3"><p>EUR: <input type="number" id="outputEUR" disabled></p></div>
+      <div ng-switch-when="q4"><p>VND: <input type="number" id="outputVND" disabled></p></div>
+    </div>
+  </div>
+  <div hidden>
+    <p>AUD: <span id="outputAUD"></span></p>
+    <p>USD: <span id="outputUSD"></span></p>
+    <p>Ruppe: <span id="outputEUR"></span></p>
+    <p>VND: <span id="outputVND"></span></p>
+  </div>
+
+ </p></div>
+ <div ng-switch-when="q5"><p>
+  <p class="fl1">
+    <label>VND:</label>
+    <input id="inputFeet" type="number" placeholder="VND" oninput="LengthConverterVND(this.value)" onchange="LengthConverter(this.value)">
+  </p>
+  <div class="fl2a1">
+    &nbsp;&nbsp;select:<select ng-model="mySelect" class="fl4">
+      <option value="q1">Australian dollar</option>
+      <option value="q2">US dollar</option>
+      <option value="q3">Euro</option>
+      <option value="q5">Rupi</option>
+    </select>
+    <div ng-switch="mySelect" class="fl3">
+      <div ng-switch-when="q1"><p>AUD: <input  type="number" id="outputAUD" disabled></p></div>
+      <div ng-switch-when="q2"><p>USD: <input type="number" id="outputUSD" disabled></p></div>
+      <div ng-switch-when="q3"><p>EUR: <input type="number" id="outputEUR" disabled></p></div>
+      <div ng-switch-when="q5"><p>INR: <input type="number" id="outputRupi" disabled></p></div>
+    </div>
+  </div>
+  <div hidden>
+    <p>AUD: <span id="outputAUD"></span></p>
+    <p>USD: <span id="outputUSD"></span></p>
+    <p>Ruppe: <span id="outputEUR"></span></p>
+    <p>VND: <span id="outputRupi"></span></p>
+  </div>
+ </p></div>
+ </div>
+</div>
+</div>
+
+<br> <br> <br>
+
+<!--history and information-->
+
+<button class="left linear">History</button>
+<button class="right swing">Information</button>
+<!--History-->
+<div class="swing">
+<div class="container">
+  <div class="para1">
+      <div class="container para2a1">
+        <ul>
+          <h4>list of units of measure</h4> <br>
+        <a class="his1" href="#hiss1">1. Australian dollar</a> &ensp;
+        <a class="his1" href="#hiss2">2. US dollar</a> &ensp;
+        <a class="his1" href="#hiss3">3. Rupi</a> &ensp;
+        <a class="his1" href="#hiss4">4. Euro</a> &ensp;
+        <a class="his1" href="#hiss5">5. VND</a> &ensp;
+        
+      </ul>
+      </div>
+      <br>
+
+      <div id="hiss1" class="container para2">
+        <ul>
+          <h3>AUSTRALIAN DOLLAR</h3>
+          Early moves towards decimalisation <br>
+          Before the adoption of the current Australian dollar in 1966, Australia's currency was the Australian pound, which like the British pound sterling was divided into 20 shillings and each shilling was divided into 12 pence, making a pound worth 240 pence. The Australian pound was introduced in 1910 and was at parity with the pound sterling or A£1 = UK£1 until 1931, when it was devalued to A£1 = UK£0.8 or 16 shillings UK. <br>
+          In 1902, a select committee of the House of Representatives, chaired by George Edwards, had recommended that Australia adopt a decimal currency with the pound divided into ten florins and the florin into 100 cents.[8] In 1937, the Banking Royal Commission[note 2] appointed by the Lyons Government had recommended that Australia adopt "a system of decimal coinage … based upon the division of the Australian pound into 1000 parts". <br>
+          Adoption of the dollar <br>
+          In February 1959, Treasurer Harold Holt appointed a Decimal Currency Committee, chaired by Walter D. Scott, to examine the merits of decimalisation. The committee reported in August 1960 in favour of decimalisation and recommended that a new currency be introduced in February 1963, with the adoption to be modelled on South Africa's replacement of the South African pound with the rand. The Menzies Government announced its support for decimalisation in July 1961, but delayed the process in order to give further consideration to the implementation process.[10] In April 1963, Holt announced that a decimal currency was scheduled to be introduced in February 1966, with a base unit equal to ten shillings, and that a Decimal Currency Board would be established to oversee the transition process. <br>
+          A public consultation process was held in which over 1,000 names were suggested for the new currency. In June 1963, Holt announced that the new currency would be called the "royal". This met with widespread public disapproval, and three months later it was announced that it would instead be named the "dollar". <br>
+          The Australian pound was replaced by the Australian dollar on 14 February 1966[12] with the conversion rate of A$2 = A£1. Since Australia was still part of the fixed-exchange sterling area, the exchange rate was fixed to the pound sterling at a rate of A$1 = 8 U.K. shillings (or UK£1 = A$2.50, and in turn UK£1 = US$2.80). In 1967, Australia effectively left the sterling area when the pound sterling was devalued against the US dollar from US$2.80 to US$2.40, but the Australian dollar chose to retain its peg to the US dollar at A$1 = US$1.12 (hence appreciating in value versus sterling). <br>
+          The Australian dollar is legal tender in its external territories: Christmas Island, Cocos (Keeling) Islands, and Norfolk Island; and is also official currency in Kiribati, Nauru, and Tuvalu. It was legal tender in Papua New Guinea until 31 December 1975 when it was replaced by the Papua New Guinean kina, and in Solomon Islands until 1977 when it was replaced by the Solomon Islands dollar. <br>
+        </ul>
+      </div>
+      <br>
+
+      <div id="hiss2" class="container para2">
+        <ul>
+          <h3>US DOLLAR</h3>
+          The history of the United States dollar began with moves by the Founding Fathers of the United States of America to establish a national currency based on the Spanish silver dollar, which had been in use in the North American colonies of the United Kingdom for over 100 years prior to the United States Declaration of Independence. The new Congress's Coinage Act of 1792 established the United States dollar as the country's standard unit of money, creating the United States Mint tasked with producing and circulating coinage. Initially defined under a bimetallic standard in terms of a fixed quantity of silver or gold, it formally adopted the gold standard in 1900, and finally eliminated all links to gold in 1971. <br>
+          Since the founding of the Federal Reserve System in 1913 as the central bank of the United States, the dollar has been primarily issued in the form of Federal Reserve Notes. The United States dollar is the world's primary reserve currency held by governments worldwide for use in international trade. <br>
+        </ul>
+      </div>
+      <br>
+
+      <div id="hiss3" class="container para2">
+        <ul>
+          <h3>RUPI</h3>
+          Rupee is the official currency of India and is also legally circulated in Bhutan, circulated unofficially but is quite common in the Nepali localities bordering India. It has the ISO 4217 code INR and is often denoted Rs or R$. In May 2009, the Reserve Bank of India (the governing body of the rupee) held a competition to design a symbol for the rupee.[1] In various Indian dialects, rupees can be pronounced as rupaya (Hindu), roopayi (Telugu and Kannada), rubai (Tamil), roopa (Malayalam) or raupya. In some eastern and northeastern states, the rupee is referred to as takan, taka (Bengali), toka (Assamese), and tonka in Oriya, and denoted T. The additional unit for the rupee is paisa . 1 rupee is equal to 100 paisa. <br>
+          Indian Rupee banknotes are available in denominations of 5, 10, 20, 50, 100, 500, and 1,000 rupees. All of these denominations have a portrait of Mahatma Gandhi on the front. Rupee coins are available in denominations of 50 paise (plural of paisa), 1, 2, 5, and 10 rupees. <br>
+          Although the rupee rate is essentially market-determined, the Reserve Bank of India actively intervenes in the foreign exchange market to keep the rupee's performing exchange rate less volatile. During the 1990s, the rupee depreciated significantly against the US dollar. Currently, about 50 rupees can be exchanged for 1 US dollar. <br>
+          In 2016, Indian Prime Minister Narendra Modi ordered the withdrawal of all 500 and 1,000 rupee notes from the domestic monetary system to fight corruption and tax evasion. People can exchange their old bills for new ones at banks or post offices between now and the end of the year, or deposit money into their accounts, but the bills will no longer be available. circulation value as of midnight on November 8, 2016. <br>
+        </ul>
+      </div>
+      <br>
+
+      <div id="hiss4" class="container para2">
+        <ul>
+          <h3>EURO</h3>
+          <h4>Introduction</h4>
+          The euro was established by the provisions in the 1992 Maastricht Treaty. To participate in the currency, member states are meant to meet strict criteria, such as a budget deficit of less than 3% of their GDP, a debt ratio of less than 60% of GDP (both of which were ultimately widely flouted after introduction), low inflation, and interest rates close to the EU average. In the Maastricht Treaty, the United Kingdom and Denmark were granted exemptions per their request from moving to the stage of monetary union which resulted in the introduction of the euro. <br>
+        The name "euro" was officially adopted in Madrid on 16 December 1995.[23] Belgian Esperantist Germain Pirlot, a former teacher of French and history is credited with naming the new currency by sending a letter to then President of the European Commission, Jacques Santer, suggesting the name "euro" on 4 August 1995. <br>
+        Due to differences in national conventions for rounding and significant digits, all conversion between the national currencies had to be carried out using the process of triangulation via the euro. The definitive values of one euro in terms of the exchange rates at which the currency entered the euro are shown on the right. <br>
+        The rates were determined by the Council of the European Union,[note 7] based on a recommendation from the European Commission based on the market rates on 31 December 1998. They were set so that one European Currency Unit (ECU) would equal one euro. The European Currency Unit was an accounting unit used by the EU, based on the currencies of the member states; it was not a currency in its own right. They could not be set earlier, because the ECU depended on the closing exchange rate of the non-euro currencies (principally the pound sterling) that day. <br>
+        The procedure used to fix the conversion rate between the Greek drachma and the euro was different since the euro by then was already two years old. While the conversion rates for the initial eleven currencies were determined only hours before the euro was introduced, the conversion rate for the Greek drachma was fixed several months beforehand. <br>
+        The currency was introduced in non-physical form (traveller's cheques, electronic transfers, banking, etc.) at midnight on 1 January 1999, when the national currencies of participating countries (the eurozone) ceased to exist independently. Their exchange rates were locked at fixed rates against each other. The euro thus became the successor to the European Currency Unit (ECU). The notes and coins for the old currencies, however, continued to be used as legal tender until new euro notes and coins were introduced on 1 January 2002. <br>
+        The changeover period during which the former currencies' notes and coins were exchanged for those of the euro lasted about two months, until 28 February 2002. The official date on which the national currencies ceased to be legal tender varied from member state to member state. The earliest date was in Germany, where the mark officially ceased to be legal tender on 31 December 2001, though the exchange period lasted for two months more. Even after the old currencies ceased to be legal tender, they continued to be accepted by national central banks for periods ranging from several years to indefinitely (the latter for Austria, Germany, Ireland, Estonia and Latvia in banknotes and coins, and for Belgium, Luxembourg, Slovenia and Slovakia in banknotes only). The earliest coins to become non-convertible were the Portuguese escudos, which ceased to have monetary value after 31 December 2002, although banknotes remain exchangeable until 2022. <br>     
+        <h4>Eurozone crisis</h4>
+        Following the U.S. financial crisis in 2008, fears of a sovereign debt crisis developed in 2009 among investors concerning some European states, with the situation becoming particularly tense in early 2010.[47][48] Greece was most acutely affected, but fellow Eurozone members Cyprus, Ireland, Italy, Portugal, and Spain were also significantly affected.[49][50] All these countries utilized EU funds except Italy, which is a major donor to the EFSF.[51] To be included in the eurozone, countries had to fulfil certain convergence criteria, but the meaningfulness of such criteria was diminished by the fact it was not enforced with the same level of strictness among countries. <br>
+        According to the Economist Intelligence Unit in 2011, "[I]f the [euro area] is treated as a single entity, its [economic and fiscal] position looks no worse and in some respects, rather better than that of the US or the UK" and the budget deficit for the euro area as a whole is much lower and the euro area's government debt/GDP ratio of 86% in 2010 was about the same level as that of the United States. "Moreover", they write, "private-sector indebtedness across the euro area as a whole is markedly lower than in the highly leveraged Anglo-Saxon economies". The authors conclude that the crisis "is as much political as economic" and the result of the fact that the euro area lacks the support of "institutional paraphernalia (and mutual bonds of solidarity) of a state". <br>
+        The crisis continued with S&P downgrading the credit rating of nine euro-area countries, including France, then downgrading the entire European Financial Stability Facility (EFSF) fund. <br>
+        A historical parallel – to 1931 when Germany was burdened with debt, unemployment and austerity while France and the United States were relatively strong creditors – gained attention in summer 2012[55] even as Germany received a debt-rating warning of its own.[56][57] In the enduring of this scenario the euro serves as a mean of quantitative primitive accumulation. <br>
+        </ul>
+      </div>
+      <br>
+
+      <div id="hiss5" class="container para2">
+        <ul>
+          <h3>VIETNAMESE DONG</h3>
+          <h4>French colonial period</h4>
+            During this period, the monetary unit of the whole Indochina region was the piastre, which is translated into Vietnamese as "dong" or sometimes "silver". The currency issued by the government during this period took silver as the standard, but the coins of the Nguyen dynasties were still circulated mainly in rural areas, although illegal. Coins were initially minted with a Mexican silver coin weighing 27 grams 073 (purity 902 parts per thousand), then an Indochina silver coin minted in France weighing 27 grams (purity 900 parts per thousand). Banknotes of this period were issued by the Indochina Bank and could be exchanged for silver at the bank. An edict dated May 16, 1900 allowed the Bank of Indochina to print banknotes three times the amount of silver guaranteed, but when World War I broke out, this ratio could no longer be maintained, paper money issued many times over. Guaranteed silver. After some monetary reform measures, on May 31, 1930, the French President issued a decree stipulating that the Dong French (Indochina) silver coin has a value of 655 milligrams of gold (900 parts per thousand purity), from That ended the silver standard and switched to the gold standard. <br>
+            <h4>The period after the August Revolution</h4>
+            <h5>From 1945 to 1954</h5>
+            After the birth of the Democratic Republic of Vietnam, on January 31, 1946, President Ho Chi Minh signed a decree to issue the Democratic Republic of Vietnam currency. And on November 31, 1946, the Democratic Republic of Vietnam banknotes were born. On one side is printed the word "Democratic Republic of Vietnam" in the national language script, Chinese characters and the image of President Ho Chi Minh; One side is printed with Nong - Cong - Binh image. All banknotes have Arabic numerals, Quoc Ngu, Chinese, Lao, and Khmer characters indicating the denomination, signed by the Minister of Finance (Pham Van Dong or Le Van Hien) and the Director of the Central Treasury. Therefore, in addition to the name "Uncle Ho's banknote", the people also call it "financial banknote". On June 5, 1951, President Ho Chi Minh signed a decree to establish the National Bank of Vietnam and issue banknotes. Banknotes are exchanged for financial notes at the rate of 1 bank dong for 10 financial dong. Banknotes have denominations: 1 dong, 10 dong, 20 dong, 50 dong, 100 dong, 200 dong, 500 dong, 1,000 dong and 5,000 dong. On one side is printed the words "Democratic Republic of Vietnam" (Chinese characters and national language) and Ho Chi Minh's picture; One side is printed with the image of workers - peasants - soldiers, soldiers in the battlefield. On the banknote, there are numbers and face value inscribed in Arabic numbers, national language and Chinese characters. <br>
+            Later, the communication between the local and the central was difficult, so the central government allowed the Central and the South to issue their own money. This money has denominations of 1 dong, 5 dong, 20 dong, 50 dong, and 100 dong. The decorative image is similar to banknotes, except that the banknotes are signed by the Chairman of the Southern Resistance Committee (Pham Van Bach), the representative of the Minister of Finance and the Director of the Southern Treasury. Some provinces are allowed to issue bills of exchange, bills of exchange, supply slips.... or banknotes that are only circulated within the province. <br>
+            At that time, in the South, the economy was divided into two regions, using two different currencies. The area under the control of France circulated money issued by France. On the other hand, although the Government issues the money of the Democratic Republic of Vietnam, but due to difficult transportation, this currency cannot be transported regularly to the South. Therefore, after the August Revolution, the people of the South still used paper money and metal coins issued by the French. <br>
+            <h5>From 1954 to 1975</h5>
+            After the French left Vietnam, the North and the South had two different regimes, each printing its own money, both called dong. <br>
+            In the South, since 1953, separate dong coins have been circulated. <br>
+            <h5>After 1975</h5>
+            At the time of reunification, the southern money was changed to liberation money, with the price of 500 South Vietnamese dong for each liberated dong from Quang Nam - Da Nang onward, in Thua Thien Hue and out, 1000 South Vietnamese dong was exchanged for 3 dong. liberate, release, free. <br>
+            In 1978, after the administrative reunification of the two Koreas, there was another currency exchange. The exchange rate in the North was 1 unified dong equal to 1 old dong, while in the South, 1 unified dong was equal to 8 dinars of liberation. <br>
+            The third exchange took place in 1985, when 10 old coins were exchanged for 1 new currency. <br>      
+        </ul>
+      </div>
+      <br>
+
+      </div>
+  </div>
+  <br> 
+  <button class="right1 ">Information</button> 
+</div>
+</div>
+<!--information-->
+<div class="linear">
+<div class="container">
+<div class="para1">
+  <div class="container para3">
+    <ul>
+      <h4>list of articles</h4> <br>
+    <a class="his1" href="#inf1">1. The SI System : An article describing what the SI system of units is</a> <br> <br>
+    <a class="his1" href="#inf2">2. Metric System : An article describing the differences between the various metric systems.Inches</a> <br> <br>
+    <a class="his1" href="#inf3">3. The meter An article defining the meter as used in the metric system, both past and present.</a> <br> <br>
+    <a class="his1" href="#inf4">4. Traditional U.S. Units: An article describing the traditional units of measurement used throughout the United States.</a> <br> <br>
+  </ul>
+  </div>
+  <br>
+
+  <div id="inf1" class="container para2">
+    <ul>
+      <h3>The SI System : An article describing what the SI system of units is</h3>
+     <h4>SI</h4>  <br>
+The International System of Units (abbreviated SI from the French phrase, Système International d'Units) is the most widely used system of units. It is the most common system for everyday commerce in the world, and is almost universally used in the realm of science. <br>
+In 1960, the SI was developed from a subset of the existing Metre-Kilogram-Second systems of units (MKS), rather than the older Centimetre-Gram-Second system (CGS). Various new units were created at that time. The SI is not static, it is a living set of standards where units are created and definitions are modified with international agreement. The SI authority describes SI as the modern metric system where modern means post-1960. It is common for people to describe non-SI units as 'metric', although there is no authority that maintains a current definition of metric system other than SI. <br>
+With a few exceptions (such as draught beer sales in the United Kingdom) the system is legally being used in every country in the world and many countries do not maintain definitions of other units. In the United States the use of SI is increasing but is still limited. In the United Kingdom, conversion to metric units is official policy but not yet complete. Those countries that still give recognition to non-SI units (e.g. the US and UK) have defined many of the modern units in terms of SI units. <br>
+<h4>History</h4>  <br>
+The metric system was officially adopted in France after the French Revolution. During the history of the metric system a number of variations have evolved and their use spread around the world replacing many traditional measurement systems. <br>
+By the end of World War II a number of different systems of measurement were still in use throughout the world. Some of these systems were metric system variations whilst others were based on the Imperial and American systems. It was recognised that additional steps were needed to promote a worldwide measurement system. As a result the 9th General Conference on Weights and Measures (CGPM), in 1948, asked the International Committee for Weights and Measures (CIPM) to conduct an international study of the measurement needs of the scientific, technical, and educational communities.<br>
+Based on the findings of this study, the 10th CGPM in 1954 decided that an international system should be derived from six base units to provide for the measurement of temperature and optical radiation in addition to mechanical and electromagnetic quantities. The six base units recommended were the metre, kilogram, second, ampere, Kelvin degree (later renamed the kelvin), and the candela. In 1960, the 11th CGPM named the system the International System of Units, abbreviated SI from the French name: Le Système International d'Units. The seventh base unit, the mole, was added in 1970 by the 14th CGPM. <br>
+The International System is now either obligatory or permissible throughout the world. It is administered by the standards organisation: the Bureau International des Poids et Mesures (International Bureau of Weights and Measures). <br>
+Cultural issues <br>
+The swift worldwide adoption of the metric system as a tool of economy and everyday commerce was based mainly on the lack of customary systems in many countries to adequately describe some concepts, or as a result of an attempt to standardize the many regional variations in the customary system. International factors also affected the adoption of the metric system, as many countries increased their trade. Scientifically, it provides ease when dealing with very large and small quantities because it lines up so well with our decimal numeral system. <br>
+Cultural differences can be represented in the local everyday uses of metric units. For example, bread is sold in one-half, one or two kilogram sizes in many countries, but you buy them by multiples of one hundred grams in the former USSR. In some countries, the informal cup measurement has become 250 mL, and prices for items are sometimes given per 100 g rather than per kilogram. A profound cultural difference between physicists and engineers, especially radio engineers, existed prior to the adoption of the metre-kilogram-second (MKS) system and hence its descendent, SI. Engineers work with volts, amperes, ohms, farads, and coulombs, which are of great practical utility, while the centimetre-gram-second (CGS) units, which are fine for theoretical physics can be inconvenient for electrical engineering usage and are largely unfamiliar to householders using appliances rated in volts and watts.< br>
+Non-scientific people should not be put off by the fine-tuning that has happened to the metric base units over the past 200 years, as experts have tried frequently to refine the metric system to fit the best scientific research (e.g. CGS to MKS to SI system changes or the invention of the Kelvin scale). These changes do not affect the everyday use of metric units. The presence of these adjustments has been one reason advocates of the U.S. customary units had used against metrication; these customary units, however, are nowadays defined in terms of SI units, thus any difference in the definition of the SI units results in a difference of the definition of the customary units. <br>
+SI writing style <br>
+<li>
+Symbols are written in lower case, except for symbols derived from the name of a person. For example, the unit of pressure is named after Blaise Pascal, so its symbol is written "Pa" whereas the unit itself is written "pascal". The one exception is the litre, whose original abbreviation "l" is dangerously similar to "1". The NIST recommends that "L" be used instead, a usage which is common in the U.S., Canada and Australia, and has been accepted as an alternative by the CGPM. The cursive "l" is occasionally seen, especially in Japan, but this is not currently recommended by any standards body. For more information, see Litre. </li>
+<li> Symbols are written in singular form: i.e. "25 kg", not "25 kgs". Pluralization would be language dependent; "s" plurals (as in French and English) are particularly undesirable since "s" is the symbol of the second. </li>
+<li>Symbols do not have an appended period (.). </li>
+<li>It is preferable to write symbols in upright Roman type (m for metres, L for litres), so as to differentiate from the italic type used for mathematical variables (m for mass, l for length). </li>
+<li>A space should separate the number and the symbol, e.g. "2.21 kg", "7.3102 m2", "22 °C". Exceptions are the symbols for plane angular degrees, minutes and seconds (°, ' and "), which are placed immediately after the number with no intervening space. </li>
+<li>Spaces should be used to group decimal digits in threes, e.g. 1 000 000 or 342 142 (in contrast to the commas or dots used in other systems, e.g. 1,000,000 or 1.000.000). </li>
+<li>The 10th resolution of CGPM in 2003 declared that "the symbol for the decimal marker shall be either the point on the line or the comma on the line". In practice, the full stop is used in English, and the comma in most other European languages. </li>
+<li>Symbols for derived units formed from multiple units by multiplication are joined with a space or centre dot ( ), e.g. N m or N m. </li>
+<li>Symbols formed by division of two units are joined with a solidus (/), or given as a negative exponent. For example, the "metre per second" can be written "m/s", "m s-1", "m s-1" or  . A solidus should not be used if the result is ambiguous, i.e. "k gm-1s-2" is preferable to "kg/m/s2". </li>
+Spelling variations <br>
+<li>Several nations, notably the United States, typically use the spellings 'meter' and 'liter' instead of 'metre' and 'litre' in keeping with standard American English spelling. In addition, the official US spelling for the SI prefix 'deca' is 'deka'. </li>
+<li>The unit 'gram' is also sometimes spelled 'gramme' in English-speaking countries other than the United States, though that is an older spelling and use is declining. </li>
+Units <br>
+SI consists of seven base units and several derived units, together with a set of prefixes. <br>
+Base units <br>
+The following are the fundamental units from which all others are derived, they are dimensionally independent. The definitions stated below are widely accepted. <br>
+<pre>
+SI Base units
+Name	Symbol	Quantity	Definition	
+kilogram	kg	Mass	The unit of mass is equal to the mass of the international prototype kilogram (a platinum-iridium cylinder) kept at the Bureau International des Poids et Mesures (BIPM), Sèvres, Paris (1st CGPM (1889), CR 34-38). Note that the kilogram is the only base unit with a prefix; the gram is defined as a derived unit, equal to 1/1000 of a kilogram; prefixes such as mega are applied to the gram, not the kg; e.g. Gg, not Mkg. It is also the only unit still defined by a physical prototype instead of a measurable natural phenomenon (see the kilogram article for an alternate definition).	
+second	s	Time	The unit of time is the duration of exactly 9 192 631 770 periods of the radiation corresponding to the transition between two hyperfine levels of the ground state of the caesium-133 atom at a temperature of 0 K (13th CGPM (1967-1968) Resolution 1, CR 103).	
+metre	m	Length	The unit of length is equal to the length of the path traveled by light in a vacuum during the time interval of 1/299 792 458 of a second (17th CGPM (1983) Resolution 1, CR 97).	
+ampere	A	Electrical current	The unit of electrical current is the constant current which, if maintained in two straight parallel conductors, of infinite length and negligible cross-section, placed 1 metre apart in a vacuum, would produce a force between these conductors equal to 2.10 -7 newtons per metre of length (9th CGPM (1948) Resolution 7, CR 70).	
+kelvin	K	Thermodynamic temperature	The unit of thermodynamic temperature (or absolute temperature) is the fraction 1/273.16 (exactly) of the thermodynamic temperature at the triple point of water (13th CGPM (1967) Resolution 4, CR 104).	
+mole	mol	Amount of substance	The unit of amount of substance is the amount of substance which contains as many elementary entities as there are atoms in 0.012 kilograms of pure carbon-12 (14th CGPM (1971) Resolution 3, CR 78). (Elementary entities may be atoms, molecules, ions, electrons, or particles.) It is approximately equal to 6.02214199.1023 units (Avogadro's number).	
+candela	cd	Luminous intensity	The unit of luminous intensity is the luminous intensity, in a given direction, of a source that emits monochromatic radiation of frequency 540.1012 hertz and that has a radiant intensity in that direction of 1/683 watt per steradian (16th CGPM (1979) Resolution 3, CR 100).
+</pre>
+<br>	
+Dimensionless derived units <br>
+The following SI units are actually dimensionless ratios, formed by dividing two identical SI units. They are therefore considered by the BIPM to be derived. Formally, their SI unit is simply the number 1, but they are given these special names, for use whenever the lack of a unit might be confusing. <br>
+SI dimensionless units <br>
+<pre>
+Name	Symbol	Quantity	Definition	
+radian	rad	Angle	The unit of angle is the angle subtended at the centre of a circle by an arc of the circumference equal in length to the radius of the circle. There are 2π
+radians in a circle.	
+Steradian	sr	Solid angle	The unit of solid angle is the solid angle subtended at the centre of a sphere of radius r by a portion of the surface of the sphere having an area r2. There are 4π
+steradians on a sphere.	
+Derived units with special names
+Base units can be put together to derive units of measurement for other quantities. Some have been given names.
+SI derived units with special names
+Name	Symbol	Quantity	Expressed in base units	
+hertz	Hz	Frequency	s-1	
+newton	N	Force	m.kg.s-2	
+joule	J	Energy	N m = m2.kg s-2	
+watt	W	Power	J/s = m2 kg s-3	
+pascal	Pa	Pressure, Stress	N/m2 = m-1 kg s-2	
+lumen	lm	Luminous flux	Cd sr = m2 m-2 cd = cd	
+lux	lx	Illuminance	lm/m2 = m2 m-4 cd = m-2 cd	
+coulomb	C	Electric charge or flux	S A	
+volt	V	Electrical potential difference	W/A = J/C = m2 kg s-3 A-1	
+ohm	Ω	Electric resistance	V/A = m2 kg s-3 A-2	
+farad	F	Electric capacitance	C/V = m-2 kg-1 s4 A2	
+weber	Wb	Magnetic flux	m2 kg s-2 A-1	
+tesla	T	Magnetic flux density	Wb/m2 = kg s-2 A-1	
+henry	H	Inductance	Wb/A = m2 kg s-2 A-2	
+siemens	S	Electric conductance	Ω-1 = m-2 kg-1 s3 A2	
+becquerel	Bq	Radioactivity (decays per unit time)	s-1	
+gray	Gy	Absorbed dose (of ionising radiation)	J/kg = m2 s-2	
+sievert	Sv	Equivalent dose (of ionising radiation)	J/kg = m2 s-2	
+katal	kat	Catalytic activity	mol/s = s-1 mol	
+degree Celsius	°C	Thermodynamic temperature	K (0 °C = 273.15 K, 0 K = -273.15 °C)	
+molarity	M	Concentration	mol/L (mols of substance/liters of solution)	
+Non-SI units accepted for use with SI
+The following units are not SI units but are “accepted for use with the International System.”
+Non-SI units accepted for use with SI
+Name	Symbol	Quantity	Equivalent SI unit	
+minute	min	time	1 min = 60 s	
+hour	h	time	1 h = 60 min = 3600 s	
+day	d	time	1 d = 24 h = 1440 min = 86400 s	
+degree of arc	°	angle	1° = (π/180) rad	
+minute of arc	‘	angle	1’ = (1/60)° = (π/10800) rad	
+second of arc	“	angle	1” = (1/60)’ = (1/3600)° = (π/648000) rad	
+litre	l or L	volume	0.001 m3	
+tonne	t	mass	1 t = 103 kg	
+Non-SI units not formally adopted by the CGPM
+neper, field quantity	Np	ratio (dimensionless)	LF = ln(F/F0) Np	
+neper, power quantity	Np	ratio (dimensionless)	LP = ½ ln(P/P0) Np	
+bel, field quantity	B	ratio (dimensionless)	LF = 2 log10(F/F0) B	
+bel, power quantity	B	ratio (dimensionless)	LP = log10(P/P0) B	
+Non-SI units with values obtained only by experiment
+electronvolt	eV	energy	1 eV = 1.60217733 (49) 10-19 J	
+atomic mass unit	u	mass	1 u = 1.6605402 (10) 10-27 kg	
+astronomical unit	AU	length	1 AU = 1.49597870691 (30) 1011 m	
+Non-SI units whose use is not encouraged
+nautical mile	 	length	1 nautical mile = 1852 m	
+knot	 	speed	1 knot = 1 nautical mile per hour = (1852/3600) m/s	
+are	a	area	1 a = 1 dam2 = 100 m2	
+hectare	ha	area	1 ha = 100 a = 10000 m2	
+bar	bar	pressure	1 bar = 105 Pa	
+a*ngstr m, angstrom	A*	length	1 A* = 0.1 nm = 10-10 m	
+barn	b	area	1 b = 10-28 m2	
+SI prefixes
+SI defines a number of SI prefixes to be used with the units: these combine with any unit name to give subdivisions and multiples. For example, the prefix kilo denotes a multiple of a thousand, so the kilometre is 1000 metres, the kilogram 1000 grams, and so on. The prefixes are never combined; a millionth of a kilogram is a milligram, and not a ‘microkilogram’.
+The following SI prefixes can be used to prefix any of the above units to produce a multiple or submultiple of the original unit. This includes the degree Celsius (e.g. “1.2 m°C”); however, to avoid confusion, prefixes are not used with the time-related unit symbols min (minute), h (hour), d (day). They are not recommended for use with the angle-related symbols ° (degree), ‘ (minute of arc), and “ (second of arc), but for astronomical usage, they are sometimes used with seconds of arc.
+SI prefixes
+10n	Prefix	Symbol	Short scale	Long scale	Decimal equivalent
+1024	yotta	Y	Septillion	Quadrillion	1 000 000 000 000 000 000 000 000
+1021	zetta	Z	Sextillion	Trilliard (thousand trillion)	1 000 000 000 000 000 000 000
+1018	exa	E	Quintillion	Trillion	1 000 000 000 000 000 000
+1015	peta	P	Quadrillion	Billiard (thousand billion)	1 000 000 000 000 000
+1012	tera	T	Trillion	Billion	1 000 000 000 000
+109	giga	G	Billion	Milliard (thousand million)	1 000 000 000
+106	mega	M	Million	1 000 000
+103	kilo	k	Thousand	1 000
+102	hecto	h	Hundred	100
+101	deca, deka	da	Ten	10
+100	none	none	One	1
+10-1	deci	d	Tenth	0.1
+10-2	centi	c	Hundredth	0.01
+10-3	milli	m	Thousandth	0.001
+10-6	micro	�	Millionth	0.000 001
+10-9	nano	n	Billionth	Milliardth	0.000 000 001
+10-12	pico	p	Trillionth	Billionth	0.000 000 000 001
+10-15	femto	f	Quadrillionth	Billiardth	0.000 000 000 000 001
+10-18	atto	a	Quintillionth	Trillionth	0.000 000 000 000 000 001
+10-21	zepto	z	Sextillionth	Trilliardth	0.000 000 000 000 000 000 001
+10-24	yocto	y	Septillionth	Quadrillionth	0.000 000 000 000 000 000 000 001
+</pre>					
+
+
+    </ul>
+  </div>
+  <br>
+
+  <div id="inf2" class="container para2">
+    <ul>
+      <h3>Metric System : An article describing the differences between the various metric systems.</h3>
+      <h4>Metric system</h4>
+      A metric system is a system of units for measurement developed in late 18th century France with decimal multipliers. In the early metric system there were two fundamental or base units, the metre and the kilogram, for length and mass. Other units were derived from these two fundamental units. <br>
+      Multiples and submultiples of metric units are related by powers of ten; the names for these are formed with prefixes. This relationship is compatible with the decimal system of numbers and it contributes greatly to the convenience of metric units.<br>
+      As the result of scientific progress, refinements, and different choices of base units, there have been a number attempts at creating metric systems. The modern (modern meaning post-1960) metric system is now widely used throughout the world and is called the International System of Units (SI).<br>
+      <h4>History</h4>
+      Scientists, chiefly in France, had been advocating and discussing a decimal system of measurement based on natural units since at least 1640. It had some support by French monarchs. The first official adoption of such a system occured in France in 1791 after the French Revolution of 1789. The creators of this metric system tried to choose units that were logical and practical. The revolution gave an opportunity for drastic change with an official ideology of "pure reason". It was proposed as a considerable improvement over the inconsistent collection of customary units that existed before. The value of these units often depended on the region. <br>
+      The adoption of the metric system in France was slow, but its desirability as an international system was recognised by geodesists and others. Since then a number of variations on the system evolved. Their use spread throughout the world, first to the non-English-speaking countries, and more recently to the English speaking countries.
+      On the 20th of May 1875 an international treaty known as the Convention du Mètre (Metre Convention) was signed by 17 states. This treaty established the following organisations to conduct international activities relating to a uniform system for measurements:<br>
+      1.	Conf rence g n rale des poids et mesures (CGPM), an intergovernmental conference of official delegates of member nations and the supreme authority for all actions; <br>
+      2.	Comit  international des poids et mesures (CIPM), consisting of selected scientists and metrologists, which prepares and executes the decisions of the CGPM and is responsible for the supervision of the International Bureau of Weights and Measures;<br>
+      3.	Bureau international des poids et mesures (BIPM), a permanent laboratory and world centre of scientific metrology, the activities of which include the establishment of the basic standards and scales of the principal physical quantities and maintenance of the international prototype standards.<br>
+      <h4>Metric systems other than the 'modern metric system' (SI)</h4>
+      <b>The original French system</b> <br>
+      The original French system somewhat continued the tradition of having separate base units for geometrically related dimensions, i.e. metre for lengths, are (100 m²) for areas, stere (1 m³) for volumes and dry capacities and litre (1 dm³) for liquid capacities. The base unit of mass was the gram it also included only few prefixes, <br>
+      Several national variants existed thereof with aliases for some common subdivisions. In general this entailed in redefinition of other units in use, e.g. 500-gram pounds or 10-kilometre miles. An example of these is mesures usuelles (or metrified English unit though never officially adopted). However its debatable whether such systems are true metric systems. <br>
+      <b>Centimetre-gram-second systems</b> <br>
+      Early on in the history of the metric system various centimetre gram second system of units (CGS) had been in use. These units were particularly convenient in science and technology. <br>
+      <b>Metre-kilogram-second systems</b> <br>
+      Later metric systems were based on the metre, kilogram and second (MKS) to improve the value of the units for practical applications. MKSC, metre-kilogram-second-coulomb systems and MKSA, metre-kilogram-second-ampere systems are extentions of these. <br>
+      The International System of Units (Système international d'units or SI) is the current international standard metric system and the system most widely used around the world. It is based on the metre, kilogram, second, ampere, kelvin, candela and mole. <br>
+      <b>Metre-tonne-second systems</b> <br>
+      The metre-tonne-second system of units (MTS) was based on the metre, tonne and second. It was invented in France and mostly used in the Soviet Union from 1933 to 1955. <br>
+      <b>Gravitational systems</b> <br>
+      Gravitational systems use the kilogram-force as a base unit of force, with mass measured in a unit known as the hyl, TME, mug or metric slug.<br>
+      <h4>Spelling variations</h4>
+      Several nations, notably the United States, typically use the spellings 'meter' and 'liter' instead of 'metre' and 'litre'. This is in keeping with standard American English spelling (for example, Americans also use 'center' rather than 'centre,' using the latter only rarely for its stylistic implications; see also American and British English differences). In addition, the official US spelling for the SI prefix 'deca' is 'deka'.<br>
+      The US government has approved these spellings for official use. In scientific contexts only the symbols are used; since these are universally the same, the differences do not arise in practice in scientific use.<br>
+      The unit 'gram' is also sometimes spelled 'gramme' in English-speaking countries other than the United States, though that is an older spelling and use is declining.
+      This article is available under the terms of the GNU Free Documentation License. Original article can be found here.
+      
+      
+    </ul>
+  </div>
+  <br>
+
+  <div id="inf3" class="container para2">
+    <ul>
+      <h3>
+        The meter An article defining the meter as used in the metric system, both past and present.
+      </h3>
+        
+<h3>Metre</h3>
+The metre [French spelling], or meter [English spelling] (symbol: m) is the SI base unit of length. It is defined as the length of the path travelled by light in absolute vacuum during a time interval of 1/299,792,458 of a second. <br>
+Adding SI prefixes to metre creates multiples and submultiples; for example kilometre (1000 metres; kilo- = 1000) and nanometre (one billionth of a metre; nano- = 1 / 1 000 000 000). <br>
+<h3>Conversions</h3>
+1 metre is equivalent to: <br>
+<li>exactly 1/0.9144 yards (approximately 1.0936 yards)</li>
+<li>exactly 1/0.3048 feet (approximately 3.2808 feet)</li>
+<li>exactly 10000/254 inches (approximately 39.370 inches)</li>
+<h3>History</h3>
+The word itself is from the Greek metron (μετρον), "a measure" via the French metre. Its first recorded usage in English is from 1797.<br>
+In the eighteenth century, there were two favoured approaches to the definition of the standard unit of length. One suggested defining the metre as the length of a pendulum with a half-period of one second. The other suggested defining the metre as one ten-millionth of the length of the earth's meridian along a quadrant (one-fourth the polar circumference of the earth). In 1791, the French Academy of Sciences selected the meridional definition over the pendular definition because of the slight variation of the force of gravity over the surface of the earth, which affects the period of a pendulum. In 1793, France adopted the metre, with this definition, as its official unit of length. Although it was later determined that the first prototype metre bar was short by a fifth of a millimetre due to miscalculation of the flattening of the earth, this length became the standard. So, the circumference of the Earth through the poles is approximately forty million metres.<br>
+<div>
+International Prototype Metre standard bar made of platinum-iridium. This was the standard until 1960, when the new SI system used a krypton-spectrum measurement as the base. In 1983 the current metre was defined by a relationship to the speed of light in a vacuum. <br>
+</div>
+In the 1870s and in light of modern precision, a series of international conferences were held to devise new metric standards. The Metre Convention (Convention du Mètre) of 1875 mandated the establishment of a permanent International Bureau of Weights and Measures (BIPM: Bureau International des Poids et Mesures) to be located in Sèvres, France. This new organisation would preserve the new prototype metre and kilogram when constructed, distribute national metric prototypes, and would maintain comparisons between them and non-metric measurement standards. This organisation created a new prototype bar in 1889 at the first General Conference on Weights and Measures (CGPM: Conference Gnrale des Poids et Mesures), establishing the International Prototype Metre as the distance between two lines on a standard bar of an alloy of ninety percent platinum and ten percent iridium, measured at the melting point of ice. <br>
+In 1893, the standard metre was first measured with an interferometer by Albert A. Michelson, the inventor of the device and an advocate of using some particular wavelength of light as a standard of distance. By 1925, interferometry was in regular use at the BIPM. However, the International Prototype Metre remained the standard until 1960, when the eleventh CGPM defined the metre in the new SI system as equal to 1,650,763.73 wavelengths of the orange-red emission line in the electromagnetic spectrum of the krypton-86 atom in a vacuum. The original international prototype of the metre is still kept at the BIPM under the conditions specified in 1889. <br>
+To further reduce uncertainty, the seventeenth CGPM of 1983 replaced the definition of the metre with its current definition, thus fixing the length of the metre in terms of time and the speed of light: <br>
+<pre>
+The metre is the length of the path travelled by light in vacuum during a time interval of 1/299 792 458 of a second.
+</pre>
+Note that this definition exactly fixes the speed of light in a vacuum at 299,792,458 metres per second. Definitions based on the physical properties of light are more precise and reproducible because the properties of light are considered to be universally constant. <br>
+<h3>Timeline of definition</h3>
+<li>1790 May 8  The French National Assembly decides that the length of the new metre would be equal to the length of a pendulum with a half-period of one second.</li>
+<li>1791 March 30 The French National Assembly accepts the proposal by the French Academy of Sciences that the new definition for the metre be equal to one ten-millionth of the length of the earth's meridian along a quadrant (one-fourth the polar circumference of the earth).</li>
+<li>1795  Provisional metre bar constructed of brass.</li>
+<li>1799 December 10  The French National Assembly specifies that the platinum metre bar, constructed on 23 June 1799 and deposited in the National Archives, as the final standards.</li>
+<li>1889 September 28  The first CGPM defines the length as the distance between two lines on a standard bar of an alloy of platinum with ten percent iridium, measured at the melting point of ice.</li>
+<li>1927 October 6 The seventh CGPM adjusts the definition of the length to be the distance, at 0 °C, between the axes of the two central lines marked on the prototype bar of platinum-iridium, this bar being subject to one standard atmosphere of pressure and supported on two cylinders of at least one centimetre diameter, symmetrically placed in the same horizontal plane at a distance of 571 millimetres from each other.</li>
+<li>1960 October 20 The eleventh CGPM defines the length to be equal to 1,650,763.73 wavelengths in vacuum of the radiation corresponding to the transition between the 2p10 and 5d5 quantum levels of the krypton-86 atom.</li>
+<li>1983 October 21 The seventeenth CGPM defines the length to be distance travelled by light in vacuum during a time interval of 1/299 792 458 of a second.</li>
+<h3>SI multiples</h3>
+<pre>
+Multiple	Name	Symbol		Multiple	Name	Symbol
+10 <sup>0</sup> metre	m		 	 	 
+10 <sup>1</sup>	decametre	dam		10 <sup>-1</sup>	decimetre	dm
+10 <sup>2</sup>	hectometre	hm		10 <sup>-2</sup>	centimetre	cm
+10 <sup>3</sup>	kilometre	km		10 <sup>-3</sup>	millimetre	mm
+10 <sup>6</sup>	megametre	Mm		10 <sup>-6</sup>	micrometre	�m
+10 <sup>9</sup>	gigametre	Gm		10 <sup>-9</sup>	nanometre	nm
+10 <sup>12</sup>	terametre	Tm		10 <sup>-12</sup>	picometre	pm
+10 <sup>15</sup>	petametre	Pm		10 <sup>-15</sup>	femtometre	fm
+10 <sup>18</sup>	exametre	Em		10 <sup>-18</sup>	attometre	am
+10 <sup>21</sup>	zettametre	Zm		10 <sup>-21</sup>	zeptometre	zm
+10 <sup>24</sup>	yottametre	Ym		10 <sup>-24</sup>	yoctometre	ym
+
+</pre>
+
+    </ul>
+  </div>
+  <br>
+
+  <div id="inf4" class="container para2">
+    <ul>
+      <h3>
+        Traditional U.S. Units: An article describing the traditional units of measurement used throughout the United States.
+      </h3>
+      <h3>U.S. customary units</h3>
+The U.S. customary units, commonly known in the United States as English units or standard units, are the non-SI (non-metric) units of measurement that are currently used in the U.S., in some cases alongside the International System of Units. This system of units is similar to, but not to be confused with, the Imperial system still used in the United Kingdom. Both systems derive from the evolution of local units over the centuries as a result of standardization efforts in England; the local units themselves mostly trace back to Roman and Anglo-Saxon units. Today, U.S. customary units are defined in terms of SI units. <br>
+The official policy of the United States government is to designate the metric system of measurement as the preferred system of weights and measures for U.S. trade and commerce. This process is known as metrication, and is evident in labeling requirements on food products, for example. However, for various reasons, customary units are still widely used on consumer products and in industrial manufacturing; only in specific scientific contexts are SI units always preferred. Since everyday weights and measures are mostly non-SI, children in U.S. public schools are generally taught customary units before SI, although many schools are now attempting to teach SI units at an earlier age.
+In most Commonwealth countries, such as Australia and New Zealand, where metrication has been more forcefully imposed and has encountered less resistance from industry and consumer market forces, metrication is relatively complete, although some informal usage of non-SI units remains, particularly in Canada. Although increasingly metric, the UK has taken some time to change over, and retains use of non-SI units, particularly in informal situations. In more populated and developed British colonies, such as India, existing local weights and measures had been redefined based upon English units; some of which are still in limited use. <br>
+Other countries have had customary units of their own, sometimes very similar in root (Germanic, Roman), name and value to the ones listed below foot or pound, for instance but frequently, similar terms designate quite different sizes. For example, miles ranged from 1 to 10 kilometers. The standardization of these units was of varying quality, but was often comparable to or better than the U.S. customary system of the 19th century. Most were later redefined in terms of kilogram and meter. Often, unlike English units, they were rounded to "nice" SI values, leading to their use in colloquial speech, alongside SI terms, into the present day. <br>
+Historically, a wide range of non-SI units have been used in the United States. and United Kingdom, and in England before that, but many of these have fallen into disuse. This article only deals with the units commonly used or officially defined in the United States. <br>
+<h3>Units of length</h3>
+The system for measuring length in the United States' customary system is based on the inch, foot, yard, and mile. However, for each of these units there exist two slightly different definitions, yielding two different systems of measure - international measure, and U.S. survey measure. The relationships between the different units within each measure is the same, but each measure has a slightly different definition in terms of metric units. <br>
+One inch international measure is exactly 25.4 millimeters, while one inch U.S. survey measure is defined so that 39.37 inches is exactly 1 meter. For most applications, the difference is insignificant (about 3 millimeter per mile). International measure is used for everyday use, engineering, and commerce in the United States, while survey measure is used only for surveying. <br>
+International measure uses the same definition of the units involved as is used in the UK and other Commonwealth countries. U.S. survey measure uses an older definition of these units which the United States used prior to adopting international measure. <br>
+<pre>
+•	1 inch (in) = 25.4 mm 
+•	1 foot (ft) = 12 in = 30.48 cm 
+•	1 yard (yd) = 3 ft = 91.44 cm
+•	1 mile (mi) = 5280 ft = 1760 yd = 1.609344 km
+•	1 rod (unit) (rd) (also called pole or perch) = 16.5 ft = 5.0292 m
+•	1 furlong (fur) = 40 rd = 660 ft = 201.168 m
+•	1 mile (survey) = 8 fur = 5280 ft ≈ 1.609347 km
+Sometimes, for surveying purposes, units known as Gunther's Chain Measure (or equivalently Surveyor's Chain Measure) are used. These units are defined by survey feet as follows:
+•	1 link (li) = 7.92 in = 0.66 ft = 0.001 fur (approx. 201.168 mm)
+•	1 chain (ch) (Gunter's) = 100 li = 66 ft (approx. 20.1168 m)
+To measure depths at sea, fathoms are used:
+•	1 fathom = 6 feet = 1.8288 m
+•	1 cable length = 120 fathoms = 720 feet = 219.456 m (US Navy definition, there are others)
+</pre>
+<h3>Units of area </h3>
+The units of area in the U.S. customary system are mostly based on the units of length squared, e.g., square inch (sq in, 645.16 mm²). Since the U.S. customary system has two differing definitions of the foot (international and survey), there are also two differing definitions for the square foot. <br>
+<pre>
+•	1 square foot (sq ft) = 144 sq in = 929.0304 cm²
+•	1 square rod (sq rd) = 272.25 sq ft = 25.29285264 m²
+•	1 acre = 10 sq ch = 1 fur  1 ch = 160 sq rd = 43,560 sq ft = 4046.8564224 m²
+•	1 square mile (sq mi) = 27,878,400 sq ft = 3,097,600 sq yd = 640 acres = 2.589988110336 km²
+</pre>
+<br>
+The Public Land Survey System, used to divide land in most of the United States, uses the survey mile to divide land into regular square parcels, such "sections" and "townships." However, these terms aren't used for general area measurement, instead used to indicate particular parcels of land in a rectangular grid.<br>
+<h3>Units of capacity and volume</h3>
+The cubic inch, cubic foot and cubic yard are commonly used for measuring volume. In addition, there is one group of units for measuring volumes of liquids, and one for measuring volumes of dry material. <br>
+Other than the cubic foot, cubic inch and cubic yard, these units are differently sized from the units in the Imperial system, although the names of the units are similar. Also, while the U.S. has separate systems for measuring the volumes of liquids and dry material, the Imperial system has one set of units for both.<br>
+Technically speaking, since these units are defined in terms of the inch, it would make a difference whether international or survey measure was used. However, in practice, the difference between the two definitions would be imperceptible, and in any case in defining volumes international measure is used.<br>
+<b>Volume in general</b> <br>
+<pre>
+•	1 cubic inch (in³ or cu in) = 16.387064 ml (or cm³)
+•	1 cubic foot (ft³ or cu ft) = 1728 cu in ≈ 28.317 L
+•	1 cubic yard (yd³ or cu yd) = 27 cu ft ≈ 7.646 hL
+•	1 acre-foot = 43,560 cu ft ≈ 325,851 gallons ≈ 12,334.818 m³
+</pre>
+<b>Liquid volume</b> <br>
+<pre>
+•	1 minim (min) = 1/480 fl oz ≈ 61.612 L
+•	1 fluid dram (fl dr) = 1/8 fl oz = 60 min ≈ 3.697 mL
+•	1 fluid ounce (fl oz) = 1/128 gal = 8 fl dr ≈ 29.574 mL
+•	1 gill (gi) = 7.21875 cu in = 4 fl oz ≈ 118.294 mL
+•	1 cup = 2 gi = 8 fl oz ≈ 236.588 mL
+•	1 pint (pt) = 2 cups = 4 gi = 16 fl oz ≈ 473.176 mL
+•	1 fifth = 25.6 fl oz ≈ 757.082 mL
+•	1 quart (qt) = 2 pt = 32 fl oz ≈ 946.353 mL
+•	1 gallon (gal) = 231 cu in = 4 qt = 128 fl oz = 3.785411784 L
+The gill is basically a paper unit which is never actually used in the United States. Distilled liquor and wine were bottled in fifths until 1973; when the term "fifth" is used now it almost always means 750 mL.
+</pre>
+<b>Dry volume</b> <br>
+<pre>
+•	1 pint (pt) ≈ 550.610 mL
+•	1 quart (qt) = 2 pt ≈ 1.101 L
+•	1 gallon (gal) = 4 qt = 268.8025 in³ = 4.404 842 803 2 L
+•	1 peck (pk) = 8 qt = 2 gal ≈ 8.81 L
+•	1 bushel (bu) = 2150.42 cu in = 4 pk ≈ 35.239 L
+</pre>
+<h3>Units of mass</h3>
+There have historically been four different English systems of mass: Tower weight, Troy weight, avoirdupois weight, and apothecaries weight. Tower weight fell out of use (due to legal prohibition) centuries ago, and was never used in the United States. Troy weight is still used to weigh precious metals. Apothecaries weight, once used in pharmacy, has been largely replaced by metric measurements. Avoirdupois weight is the primary system of mass in the U.S. customary system. <br>
+The Avoirdupois units are legally defined as measures of mass, but the names of these units are sometimes applied to measures of force. For instance, in most contexts, the pound avoirdupois is used as a unit of mass, but in the realm of physics, the term "pound" can represent "pound-force" (a unit of force properly abbreviated as "lbf"). <br> 
+Troy weight, avoirdupois weight and apothecaries weight are all defined in terms of the same basic unit, the grain, which is the same in all three systems. However, while each system has some overlap in the names of their units of measure (all have ounces and pounds), the relationship between the grain and these other units within each system varies. For example, in apothecaries and troy weight, the pound and ounce are the same, but are different from the pound and ounce in avoirdupois, in terms of their relationships to grains and to each other. The systems also have different units between the grain and ounce (apothecaries has scruple and dram, troy has pennyweight, and avoirdupois has just dram). The dram was once known as the drachm. <br>
+To alleviate confusion, it is typical when publishing non-avoirdupois weights to mention the name of the system along with the unit. Precious metals, for example, are often weighed in "troy ounces", because just "ounce" would be more likely to be assumed to mean an ounce avoirdupois. <br>
+The pound avoirdupois, which forms the basis of the U.S. customary system of mass, is defined as exactly 453.59237 grams. All the other units of mass are defined in terms of it. <br>
+For the pound and smaller units, the U.S. customary system and the British Imperial system are identical. However, they differ when dealing with units larger than the pound. The definition of the pound avoirdupois in the British Imperial system is identical to that in the U.S. customary system. <br>
+<b>Avoirdupois weight</b> <br>
+<pre>
+•	1 grain (gr) = 64.79891 mg
+•	1 dram (dr) = 27 11/32 gr = 1/16 oz ≈ 1.772 g
+•	1 ounce (oz) = 16 dr = 437.5 gr ≈ 28.35 g
+•	1 pound (lb) = 16 oz = 7000 gr = 453.59237 g
+•	1 hundredweight (cwt) = 100 lb = 45.359 kg
+•	1 ton (t) = 20 cwt = 2000 lb = 907.18474 kg ≈ 0.907 t
+The ton and hundredweight above are referred to as the short ton, and the short hundredweight, to distinguish them from the British Imperial ton and hundredweight, which are larger and hence are referred to as the long ton and long hundredweight. The long ton has limited use in the United States.
+•	1 long hundredweight = 112 lb ≈ 50.802 kg
+•	1 long ton = 20 long cwt = 2240 lb ≈ 1016.047 kg ≈ 1.016 t
+</pre>
+<b>Apothecaries' weight</b> <br>
+The grain has the same definition as for avoirdupois weight.
+•	1 scruple (s ap) = 20 gr ≈ 1.296 g
+•	1 dram apothecaries (dr ap) = 3 s ap ≈ 3.888 g
+•	1 ounce apothecaries (oz ap) = 1 oz t = 8 dr ap = 480 gr ≈ 31.103 g
+•	1 pound apothecaries (lb ap) = 1 lb t = 12 oz ap = 5760 gr ≈ 373.242 g
+The pound and ounce apothecaries are identical to the pound and ounce troy.
+<b>Troy weight</b> <br>
+The grain has the same definition as for Avoirdupois weight.<br>
+<pre>
+•	1 pennyweight (dwt) = 24 gr ≈ 1.555 g
+•	1 ounce troy (oz t) = 20 dwt = 480 gr ≈ 31.103 g
+•	1 pound troy (lb t) = 12 oz t = 5760 gr ≈ 373.242 g
+</pre>
+<h3>Cooking measures</h3>
+The most common cooking weights and measures in the U.S. are as follows: <br>
+<pre>
+•	1 teaspoon = 1/3 tbsp = 1/6 fl oz ≈ 5 mL
+•	1 tablespoon (tbsp) = 1/2 fl oz = 4 fl dr ≈ 15 mL
+•	1 cup = 8 fl oz ≈ 240 mL
+•	1 stick (of butter) = 1/4 lb = 4 oz ≈ 115 g
+</pre>
+<h3>Grain measures</h3>
+These are derived from the volume measures and there have been more for other crops.<br>
+<pre>
+•	1 bushel (maize) = 56 lb ≈ 25.401 kg
+•	1 bushel (wheat) = 60 lb ≈ 27.216 kg
+</pre>
+<h3>Units of temperature</h3>
+Traditionally, degrees Fahrenheit are used in the United States to measure temperatures<br>
+<pre>.
+•	Pure water freezes at 32 °F and boils at 212 °F at 1 atm.
+•	Water saturated with common salt freezes at -6.02 °F.
+•	Conversion formula: 
+
+</pre>
+
+    </ul>
+    </div>
+  </div>
+<br> 
+
+<button class="left1 ">History</button> 
+</div>
+</div>
+</div>
+
+
+<!--Chống chế-->
+
+
+<div class="swing1">
+  <div class="container">
+    <div class="para1">
+        <div class="container para2a1">
+          <ul>
+            <h4>list of units of measure</h4> <br>
+          <a class="his1" href="#hisss1">1. Australian dollar</a> &ensp;
+          <a class="his1" href="#hisss2">2. US dollar</a> &ensp;
+          <a class="his1" href="#hisss3">3. Rupi</a> &ensp;
+          <a class="his1" href="#hisss4">4. Euro</a> &ensp;
+          <a class="his1" href="#hisss5">5. VND</a> &ensp;
+          
+        </ul>
+        </div>
+        <br>
+  
+        <div id="hisss1" class="container para2">
+          <ul>
+            <h3>AUSTRALIAN DOLLAR</h3>
+            Early moves towards decimalisation <br>
+            Before the adoption of the current Australian dollar in 1966, Australia's currency was the Australian pound, which like the British pound sterling was divided into 20 shillings and each shilling was divided into 12 pence, making a pound worth 240 pence. The Australian pound was introduced in 1910 and was at parity with the pound sterling or A£1 = UK£1 until 1931, when it was devalued to A£1 = UK£0.8 or 16 shillings UK. <br>
+            In 1902, a select committee of the House of Representatives, chaired by George Edwards, had recommended that Australia adopt a decimal currency with the pound divided into ten florins and the florin into 100 cents.[8] In 1937, the Banking Royal Commission[note 2] appointed by the Lyons Government had recommended that Australia adopt "a system of decimal coinage … based upon the division of the Australian pound into 1000 parts". <br>
+            Adoption of the dollar <br>
+            In February 1959, Treasurer Harold Holt appointed a Decimal Currency Committee, chaired by Walter D. Scott, to examine the merits of decimalisation. The committee reported in August 1960 in favour of decimalisation and recommended that a new currency be introduced in February 1963, with the adoption to be modelled on South Africa's replacement of the South African pound with the rand. The Menzies Government announced its support for decimalisation in July 1961, but delayed the process in order to give further consideration to the implementation process.[10] In April 1963, Holt announced that a decimal currency was scheduled to be introduced in February 1966, with a base unit equal to ten shillings, and that a Decimal Currency Board would be established to oversee the transition process. <br>
+            A public consultation process was held in which over 1,000 names were suggested for the new currency. In June 1963, Holt announced that the new currency would be called the "royal". This met with widespread public disapproval, and three months later it was announced that it would instead be named the "dollar". <br>
+            The Australian pound was replaced by the Australian dollar on 14 February 1966[12] with the conversion rate of A$2 = A£1. Since Australia was still part of the fixed-exchange sterling area, the exchange rate was fixed to the pound sterling at a rate of A$1 = 8 U.K. shillings (or UK£1 = A$2.50, and in turn UK£1 = US$2.80). In 1967, Australia effectively left the sterling area when the pound sterling was devalued against the US dollar from US$2.80 to US$2.40, but the Australian dollar chose to retain its peg to the US dollar at A$1 = US$1.12 (hence appreciating in value versus sterling). <br>
+            The Australian dollar is legal tender in its external territories: Christmas Island, Cocos (Keeling) Islands, and Norfolk Island; and is also official currency in Kiribati, Nauru, and Tuvalu. It was legal tender in Papua New Guinea until 31 December 1975 when it was replaced by the Papua New Guinean kina, and in Solomon Islands until 1977 when it was replaced by the Solomon Islands dollar. <br>
+          </ul>
+        </div>
+        <br>
+  
+        <div id="hisss2" class="container para2">
+          <ul>
+            <h3>US DOLLAR</h3>
+            The history of the United States dollar began with moves by the Founding Fathers of the United States of America to establish a national currency based on the Spanish silver dollar, which had been in use in the North American colonies of the United Kingdom for over 100 years prior to the United States Declaration of Independence. The new Congress's Coinage Act of 1792 established the United States dollar as the country's standard unit of money, creating the United States Mint tasked with producing and circulating coinage. Initially defined under a bimetallic standard in terms of a fixed quantity of silver or gold, it formally adopted the gold standard in 1900, and finally eliminated all links to gold in 1971. <br>
+            Since the founding of the Federal Reserve System in 1913 as the central bank of the United States, the dollar has been primarily issued in the form of Federal Reserve Notes. The United States dollar is the world's primary reserve currency held by governments worldwide for use in international trade. <br>
+          </ul>
+        </div>
+        <br>
+  
+        <div id="hisss3" class="container para2">
+          <ul>
+            <h3>RUPI</h3>
+            Rupee is the official currency of India and is also legally circulated in Bhutan, circulated unofficially but is quite common in the Nepali localities bordering India. It has the ISO 4217 code INR and is often denoted Rs or R$. In May 2009, the Reserve Bank of India (the governing body of the rupee) held a competition to design a symbol for the rupee.[1] In various Indian dialects, rupees can be pronounced as rupaya (Hindu), roopayi (Telugu and Kannada), rubai (Tamil), roopa (Malayalam) or raupya. In some eastern and northeastern states, the rupee is referred to as takan, taka (Bengali), toka (Assamese), and tonka in Oriya, and denoted T. The additional unit for the rupee is paisa . 1 rupee is equal to 100 paisa. <br>
+            Indian Rupee banknotes are available in denominations of 5, 10, 20, 50, 100, 500, and 1,000 rupees. All of these denominations have a portrait of Mahatma Gandhi on the front. Rupee coins are available in denominations of 50 paise (plural of paisa), 1, 2, 5, and 10 rupees. <br>
+            Although the rupee rate is essentially market-determined, the Reserve Bank of India actively intervenes in the foreign exchange market to keep the rupee's performing exchange rate less volatile. During the 1990s, the rupee depreciated significantly against the US dollar. Currently, about 50 rupees can be exchanged for 1 US dollar. <br>
+            In 2016, Indian Prime Minister Narendra Modi ordered the withdrawal of all 500 and 1,000 rupee notes from the domestic monetary system to fight corruption and tax evasion. People can exchange their old bills for new ones at banks or post offices between now and the end of the year, or deposit money into their accounts, but the bills will no longer be available. circulation value as of midnight on November 8, 2016. <br>
+          </ul>
+        </div>
+        <br>
+  
+        <div id="hisss4" class="container para2">
+          <ul>
+            <h3>EURO</h3>
+            <h4>Introduction</h4>
+            The euro was established by the provisions in the 1992 Maastricht Treaty. To participate in the currency, member states are meant to meet strict criteria, such as a budget deficit of less than 3% of their GDP, a debt ratio of less than 60% of GDP (both of which were ultimately widely flouted after introduction), low inflation, and interest rates close to the EU average. In the Maastricht Treaty, the United Kingdom and Denmark were granted exemptions per their request from moving to the stage of monetary union which resulted in the introduction of the euro. <br>
+          The name "euro" was officially adopted in Madrid on 16 December 1995.[23] Belgian Esperantist Germain Pirlot, a former teacher of French and history is credited with naming the new currency by sending a letter to then President of the European Commission, Jacques Santer, suggesting the name "euro" on 4 August 1995. <br>
+          Due to differences in national conventions for rounding and significant digits, all conversion between the national currencies had to be carried out using the process of triangulation via the euro. The definitive values of one euro in terms of the exchange rates at which the currency entered the euro are shown on the right. <br>
+          The rates were determined by the Council of the European Union,[note 7] based on a recommendation from the European Commission based on the market rates on 31 December 1998. They were set so that one European Currency Unit (ECU) would equal one euro. The European Currency Unit was an accounting unit used by the EU, based on the currencies of the member states; it was not a currency in its own right. They could not be set earlier, because the ECU depended on the closing exchange rate of the non-euro currencies (principally the pound sterling) that day. <br>
+          The procedure used to fix the conversion rate between the Greek drachma and the euro was different since the euro by then was already two years old. While the conversion rates for the initial eleven currencies were determined only hours before the euro was introduced, the conversion rate for the Greek drachma was fixed several months beforehand. <br>
+          The currency was introduced in non-physical form (traveller's cheques, electronic transfers, banking, etc.) at midnight on 1 January 1999, when the national currencies of participating countries (the eurozone) ceased to exist independently. Their exchange rates were locked at fixed rates against each other. The euro thus became the successor to the European Currency Unit (ECU). The notes and coins for the old currencies, however, continued to be used as legal tender until new euro notes and coins were introduced on 1 January 2002. <br>
+          The changeover period during which the former currencies' notes and coins were exchanged for those of the euro lasted about two months, until 28 February 2002. The official date on which the national currencies ceased to be legal tender varied from member state to member state. The earliest date was in Germany, where the mark officially ceased to be legal tender on 31 December 2001, though the exchange period lasted for two months more. Even after the old currencies ceased to be legal tender, they continued to be accepted by national central banks for periods ranging from several years to indefinitely (the latter for Austria, Germany, Ireland, Estonia and Latvia in banknotes and coins, and for Belgium, Luxembourg, Slovenia and Slovakia in banknotes only). The earliest coins to become non-convertible were the Portuguese escudos, which ceased to have monetary value after 31 December 2002, although banknotes remain exchangeable until 2022. <br>     
+          <h4>Eurozone crisis</h4>
+          Following the U.S. financial crisis in 2008, fears of a sovereign debt crisis developed in 2009 among investors concerning some European states, with the situation becoming particularly tense in early 2010.[47][48] Greece was most acutely affected, but fellow Eurozone members Cyprus, Ireland, Italy, Portugal, and Spain were also significantly affected.[49][50] All these countries utilized EU funds except Italy, which is a major donor to the EFSF.[51] To be included in the eurozone, countries had to fulfil certain convergence criteria, but the meaningfulness of such criteria was diminished by the fact it was not enforced with the same level of strictness among countries. <br>
+          According to the Economist Intelligence Unit in 2011, "[I]f the [euro area] is treated as a single entity, its [economic and fiscal] position looks no worse and in some respects, rather better than that of the US or the UK" and the budget deficit for the euro area as a whole is much lower and the euro area's government debt/GDP ratio of 86% in 2010 was about the same level as that of the United States. "Moreover", they write, "private-sector indebtedness across the euro area as a whole is markedly lower than in the highly leveraged Anglo-Saxon economies". The authors conclude that the crisis "is as much political as economic" and the result of the fact that the euro area lacks the support of "institutional paraphernalia (and mutual bonds of solidarity) of a state". <br>
+          The crisis continued with S&P downgrading the credit rating of nine euro-area countries, including France, then downgrading the entire European Financial Stability Facility (EFSF) fund. <br>
+          A historical parallel – to 1931 when Germany was burdened with debt, unemployment and austerity while France and the United States were relatively strong creditors – gained attention in summer 2012[55] even as Germany received a debt-rating warning of its own.[56][57] In the enduring of this scenario the euro serves as a mean of quantitative primitive accumulation. <br>
+          </ul>
+        </div>
+        <br>
+  
+        <div id="hisss5" class="container para2">
+          <ul>
+            <h3>VIETNAMESE DONG</h3>
+            <h4>French colonial period</h4>
+              During this period, the monetary unit of the whole Indochina region was the piastre, which is translated into Vietnamese as "dong" or sometimes "silver". The currency issued by the government during this period took silver as the standard, but the coins of the Nguyen dynasties were still circulated mainly in rural areas, although illegal. Coins were initially minted with a Mexican silver coin weighing 27 grams 073 (purity 902 parts per thousand), then an Indochina silver coin minted in France weighing 27 grams (purity 900 parts per thousand). Banknotes of this period were issued by the Indochina Bank and could be exchanged for silver at the bank. An edict dated May 16, 1900 allowed the Bank of Indochina to print banknotes three times the amount of silver guaranteed, but when World War I broke out, this ratio could no longer be maintained, paper money issued many times over. Guaranteed silver. After some monetary reform measures, on May 31, 1930, the French President issued a decree stipulating that the Dong French (Indochina) silver coin has a value of 655 milligrams of gold (900 parts per thousand purity), from That ended the silver standard and switched to the gold standard. <br>
+              <h4>The period after the August Revolution</h4>
+              <h5>From 1945 to 1954</h5>
+              After the birth of the Democratic Republic of Vietnam, on January 31, 1946, President Ho Chi Minh signed a decree to issue the Democratic Republic of Vietnam currency. And on November 31, 1946, the Democratic Republic of Vietnam banknotes were born. On one side is printed the word "Democratic Republic of Vietnam" in the national language script, Chinese characters and the image of President Ho Chi Minh; One side is printed with Nong - Cong - Binh image. All banknotes have Arabic numerals, Quoc Ngu, Chinese, Lao, and Khmer characters indicating the denomination, signed by the Minister of Finance (Pham Van Dong or Le Van Hien) and the Director of the Central Treasury. Therefore, in addition to the name "Uncle Ho's banknote", the people also call it "financial banknote". On June 5, 1951, President Ho Chi Minh signed a decree to establish the National Bank of Vietnam and issue banknotes. Banknotes are exchanged for financial notes at the rate of 1 bank dong for 10 financial dong. Banknotes have denominations: 1 dong, 10 dong, 20 dong, 50 dong, 100 dong, 200 dong, 500 dong, 1,000 dong and 5,000 dong. On one side is printed the words "Democratic Republic of Vietnam" (Chinese characters and national language) and Ho Chi Minh's picture; One side is printed with the image of workers - peasants - soldiers, soldiers in the battlefield. On the banknote, there are numbers and face value inscribed in Arabic numbers, national language and Chinese characters. <br>
+              Later, the communication between the local and the central was difficult, so the central government allowed the Central and the South to issue their own money. This money has denominations of 1 dong, 5 dong, 20 dong, 50 dong, and 100 dong. The decorative image is similar to banknotes, except that the banknotes are signed by the Chairman of the Southern Resistance Committee (Pham Van Bach), the representative of the Minister of Finance and the Director of the Southern Treasury. Some provinces are allowed to issue bills of exchange, bills of exchange, supply slips.... or banknotes that are only circulated within the province. <br>
+              At that time, in the South, the economy was divided into two regions, using two different currencies. The area under the control of France circulated money issued by France. On the other hand, although the Government issues the money of the Democratic Republic of Vietnam, but due to difficult transportation, this currency cannot be transported regularly to the South. Therefore, after the August Revolution, the people of the South still used paper money and metal coins issued by the French. <br>
+              <h5>From 1954 to 1975</h5>
+              After the French left Vietnam, the North and the South had two different regimes, each printing its own money, both called dong. <br>
+              In the South, since 1953, separate dong coins have been circulated. <br>
+              <h5>After 1975</h5>
+              At the time of reunification, the southern money was changed to liberation money, with the price of 500 South Vietnamese dong for each liberated dong from Quang Nam - Da Nang onward, in Thua Thien Hue and out, 1000 South Vietnamese dong was exchanged for 3 dong. liberate, release, free. <br>
+              In 1978, after the administrative reunification of the two Koreas, there was another currency exchange. The exchange rate in the North was 1 unified dong equal to 1 old dong, while in the South, 1 unified dong was equal to 8 dinars of liberation. <br>
+              The third exchange took place in 1985, when 10 old coins were exchanged for 1 new currency. <br>      
+          </ul>
+        </div>
+        <br>
+  
+        </div>
+    </div>
+    <br> 
+     
+  </div>
+  </div>
+
+<!--information-->
+<div class="linear1">
+<div class="container">
+<div class="para1">
+<div class="container para3">
+<ul>
+  <h4>list of articles</h4> <br>
+<a class="his1" href="#info1">1. The SI System : An article describing what the SI system of units is</a> <br> <br>
+<a class="his1" href="#info2">2. Metric System : An article describing the differences between the various metric systems.Inches</a> <br> <br>
+<a class="his1" href="#info3">3. The meter An article defining the meter as used in the metric system, both past and present.</a> <br> <br>
+<a class="his1" href="#info4">4. Traditional U.S. Units: An article describing the traditional units of measurement used throughout the United States.</a> <br> <br>
+</ul>
+</div>
+<br>
+
+<div id="info1" class="container para2">
+<ul>
+  <h3>The SI System : An article describing what the SI system of units is</h3>
+ <h4>SI</h4>  <br>
+The International System of Units (abbreviated SI from the French phrase, Système International d'Units) is the most widely used system of units. It is the most common system for everyday commerce in the world, and is almost universally used in the realm of science. <br>
+In 1960, the SI was developed from a subset of the existing Metre-Kilogram-Second systems of units (MKS), rather than the older Centimetre-Gram-Second system (CGS). Various new units were created at that time. The SI is not static, it is a living set of standards where units are created and definitions are modified with international agreement. The SI authority describes SI as the modern metric system where modern means post-1960. It is common for people to describe non-SI units as 'metric', although there is no authority that maintains a current definition of metric system other than SI. <br>
+With a few exceptions (such as draught beer sales in the United Kingdom) the system is legally being used in every country in the world and many countries do not maintain definitions of other units. In the United States the use of SI is increasing but is still limited. In the United Kingdom, conversion to metric units is official policy but not yet complete. Those countries that still give recognition to non-SI units (e.g. the US and UK) have defined many of the modern units in terms of SI units. <br>
+<h4>History</h4>  <br>
+The metric system was officially adopted in France after the French Revolution. During the history of the metric system a number of variations have evolved and their use spread around the world replacing many traditional measurement systems. <br>
+By the end of World War II a number of different systems of measurement were still in use throughout the world. Some of these systems were metric system variations whilst others were based on the Imperial and American systems. It was recognised that additional steps were needed to promote a worldwide measurement system. As a result the 9th General Conference on Weights and Measures (CGPM), in 1948, asked the International Committee for Weights and Measures (CIPM) to conduct an international study of the measurement needs of the scientific, technical, and educational communities.<br>
+Based on the findings of this study, the 10th CGPM in 1954 decided that an international system should be derived from six base units to provide for the measurement of temperature and optical radiation in addition to mechanical and electromagnetic quantities. The six base units recommended were the metre, kilogram, second, ampere, Kelvin degree (later renamed the kelvin), and the candela. In 1960, the 11th CGPM named the system the International System of Units, abbreviated SI from the French name: Le Système International d'Units. The seventh base unit, the mole, was added in 1970 by the 14th CGPM. <br>
+The International System is now either obligatory or permissible throughout the world. It is administered by the standards organisation: the Bureau International des Poids et Mesures (International Bureau of Weights and Measures). <br>
+Cultural issues <br>
+The swift worldwide adoption of the metric system as a tool of economy and everyday commerce was based mainly on the lack of customary systems in many countries to adequately describe some concepts, or as a result of an attempt to standardize the many regional variations in the customary system. International factors also affected the adoption of the metric system, as many countries increased their trade. Scientifically, it provides ease when dealing with very large and small quantities because it lines up so well with our decimal numeral system. <br>
+Cultural differences can be represented in the local everyday uses of metric units. For example, bread is sold in one-half, one or two kilogram sizes in many countries, but you buy them by multiples of one hundred grams in the former USSR. In some countries, the informal cup measurement has become 250 mL, and prices for items are sometimes given per 100 g rather than per kilogram. A profound cultural difference between physicists and engineers, especially radio engineers, existed prior to the adoption of the metre-kilogram-second (MKS) system and hence its descendent, SI. Engineers work with volts, amperes, ohms, farads, and coulombs, which are of great practical utility, while the centimetre-gram-second (CGS) units, which are fine for theoretical physics can be inconvenient for electrical engineering usage and are largely unfamiliar to householders using appliances rated in volts and watts.< br>
+Non-scientific people should not be put off by the fine-tuning that has happened to the metric base units over the past 200 years, as experts have tried frequently to refine the metric system to fit the best scientific research (e.g. CGS to MKS to SI system changes or the invention of the Kelvin scale). These changes do not affect the everyday use of metric units. The presence of these adjustments has been one reason advocates of the U.S. customary units had used against metrication; these customary units, however, are nowadays defined in terms of SI units, thus any difference in the definition of the SI units results in a difference of the definition of the customary units. <br>
+SI writing style <br>
+<li>
+Symbols are written in lower case, except for symbols derived from the name of a person. For example, the unit of pressure is named after Blaise Pascal, so its symbol is written "Pa" whereas the unit itself is written "pascal". The one exception is the litre, whose original abbreviation "l" is dangerously similar to "1". The NIST recommends that "L" be used instead, a usage which is common in the U.S., Canada and Australia, and has been accepted as an alternative by the CGPM. The cursive "l" is occasionally seen, especially in Japan, but this is not currently recommended by any standards body. For more information, see Litre. </li>
+<li> Symbols are written in singular form: i.e. "25 kg", not "25 kgs". Pluralization would be language dependent; "s" plurals (as in French and English) are particularly undesirable since "s" is the symbol of the second. </li>
+<li>Symbols do not have an appended period (.). </li>
+<li>It is preferable to write symbols in upright Roman type (m for metres, L for litres), so as to differentiate from the italic type used for mathematical variables (m for mass, l for length). </li>
+<li>A space should separate the number and the symbol, e.g. "2.21 kg", "7.3102 m2", "22 °C". Exceptions are the symbols for plane angular degrees, minutes and seconds (°, ' and "), which are placed immediately after the number with no intervening space. </li>
+<li>Spaces should be used to group decimal digits in threes, e.g. 1 000 000 or 342 142 (in contrast to the commas or dots used in other systems, e.g. 1,000,000 or 1.000.000). </li>
+<li>The 10th resolution of CGPM in 2003 declared that "the symbol for the decimal marker shall be either the point on the line or the comma on the line". In practice, the full stop is used in English, and the comma in most other European languages. </li>
+<li>Symbols for derived units formed from multiple units by multiplication are joined with a space or centre dot ( ), e.g. N m or N m. </li>
+<li>Symbols formed by division of two units are joined with a solidus (/), or given as a negative exponent. For example, the "metre per second" can be written "m/s", "m s-1", "m s-1" or  . A solidus should not be used if the result is ambiguous, i.e. "k gm-1s-2" is preferable to "kg/m/s2". </li>
+Spelling variations <br>
+<li>Several nations, notably the United States, typically use the spellings 'meter' and 'liter' instead of 'metre' and 'litre' in keeping with standard American English spelling. In addition, the official US spelling for the SI prefix 'deca' is 'deka'. </li>
+<li>The unit 'gram' is also sometimes spelled 'gramme' in English-speaking countries other than the United States, though that is an older spelling and use is declining. </li>
+Units <br>
+SI consists of seven base units and several derived units, together with a set of prefixes. <br>
+Base units <br>
+The following are the fundamental units from which all others are derived, they are dimensionally independent. The definitions stated below are widely accepted. <br>
+<pre>
+SI Base units
+Name	Symbol	Quantity	Definition	
+kilogram	kg	Mass	The unit of mass is equal to the mass of the international prototype kilogram (a platinum-iridium cylinder) kept at the Bureau International des Poids et Mesures (BIPM), Sèvres, Paris (1st CGPM (1889), CR 34-38). Note that the kilogram is the only base unit with a prefix; the gram is defined as a derived unit, equal to 1/1000 of a kilogram; prefixes such as mega are applied to the gram, not the kg; e.g. Gg, not Mkg. It is also the only unit still defined by a physical prototype instead of a measurable natural phenomenon (see the kilogram article for an alternate definition).	
+second	s	Time	The unit of time is the duration of exactly 9 192 631 770 periods of the radiation corresponding to the transition between two hyperfine levels of the ground state of the caesium-133 atom at a temperature of 0 K (13th CGPM (1967-1968) Resolution 1, CR 103).	
+metre	m	Length	The unit of length is equal to the length of the path traveled by light in a vacuum during the time interval of 1/299 792 458 of a second (17th CGPM (1983) Resolution 1, CR 97).	
+ampere	A	Electrical current	The unit of electrical current is the constant current which, if maintained in two straight parallel conductors, of infinite length and negligible cross-section, placed 1 metre apart in a vacuum, would produce a force between these conductors equal to 2.10 -7 newtons per metre of length (9th CGPM (1948) Resolution 7, CR 70).	
+kelvin	K	Thermodynamic temperature	The unit of thermodynamic temperature (or absolute temperature) is the fraction 1/273.16 (exactly) of the thermodynamic temperature at the triple point of water (13th CGPM (1967) Resolution 4, CR 104).	
+mole	mol	Amount of substance	The unit of amount of substance is the amount of substance which contains as many elementary entities as there are atoms in 0.012 kilograms of pure carbon-12 (14th CGPM (1971) Resolution 3, CR 78). (Elementary entities may be atoms, molecules, ions, electrons, or particles.) It is approximately equal to 6.02214199.1023 units (Avogadro's number).	
+candela	cd	Luminous intensity	The unit of luminous intensity is the luminous intensity, in a given direction, of a source that emits monochromatic radiation of frequency 540.1012 hertz and that has a radiant intensity in that direction of 1/683 watt per steradian (16th CGPM (1979) Resolution 3, CR 100).
+</pre>
+<br>	
+Dimensionless derived units <br>
+The following SI units are actually dimensionless ratios, formed by dividing two identical SI units. They are therefore considered by the BIPM to be derived. Formally, their SI unit is simply the number 1, but they are given these special names, for use whenever the lack of a unit might be confusing. <br>
+SI dimensionless units <br>
+<pre>
+Name	Symbol	Quantity	Definition	
+radian	rad	Angle	The unit of angle is the angle subtended at the centre of a circle by an arc of the circumference equal in length to the radius of the circle. There are 2π
+radians in a circle.	
+Steradian	sr	Solid angle	The unit of solid angle is the solid angle subtended at the centre of a sphere of radius r by a portion of the surface of the sphere having an area r2. There are 4π
+steradians on a sphere.	
+Derived units with special names
+Base units can be put together to derive units of measurement for other quantities. Some have been given names.
+SI derived units with special names
+Name	Symbol	Quantity	Expressed in base units	
+hertz	Hz	Frequency	s-1	
+newton	N	Force	m.kg.s-2	
+joule	J	Energy	N m = m2.kg s-2	
+watt	W	Power	J/s = m2 kg s-3	
+pascal	Pa	Pressure, Stress	N/m2 = m-1 kg s-2	
+lumen	lm	Luminous flux	Cd sr = m2 m-2 cd = cd	
+lux	lx	Illuminance	lm/m2 = m2 m-4 cd = m-2 cd	
+coulomb	C	Electric charge or flux	S A	
+volt	V	Electrical potential difference	W/A = J/C = m2 kg s-3 A-1	
+ohm	Ω	Electric resistance	V/A = m2 kg s-3 A-2	
+farad	F	Electric capacitance	C/V = m-2 kg-1 s4 A2	
+weber	Wb	Magnetic flux	m2 kg s-2 A-1	
+tesla	T	Magnetic flux density	Wb/m2 = kg s-2 A-1	
+henry	H	Inductance	Wb/A = m2 kg s-2 A-2	
+siemens	S	Electric conductance	Ω-1 = m-2 kg-1 s3 A2	
+becquerel	Bq	Radioactivity (decays per unit time)	s-1	
+gray	Gy	Absorbed dose (of ionising radiation)	J/kg = m2 s-2	
+sievert	Sv	Equivalent dose (of ionising radiation)	J/kg = m2 s-2	
+katal	kat	Catalytic activity	mol/s = s-1 mol	
+degree Celsius	°C	Thermodynamic temperature	K (0 °C = 273.15 K, 0 K = -273.15 °C)	
+molarity	M	Concentration	mol/L (mols of substance/liters of solution)	
+Non-SI units accepted for use with SI
+The following units are not SI units but are “accepted for use with the International System.”
+Non-SI units accepted for use with SI
+Name	Symbol	Quantity	Equivalent SI unit	
+minute	min	time	1 min = 60 s	
+hour	h	time	1 h = 60 min = 3600 s	
+day	d	time	1 d = 24 h = 1440 min = 86400 s	
+degree of arc	°	angle	1° = (π/180) rad	
+minute of arc	‘	angle	1’ = (1/60)° = (π/10800) rad	
+second of arc	“	angle	1” = (1/60)’ = (1/3600)° = (π/648000) rad	
+litre	l or L	volume	0.001 m3	
+tonne	t	mass	1 t = 103 kg	
+Non-SI units not formally adopted by the CGPM
+neper, field quantity	Np	ratio (dimensionless)	LF = ln(F/F0) Np	
+neper, power quantity	Np	ratio (dimensionless)	LP = ½ ln(P/P0) Np	
+bel, field quantity	B	ratio (dimensionless)	LF = 2 log10(F/F0) B	
+bel, power quantity	B	ratio (dimensionless)	LP = log10(P/P0) B	
+Non-SI units with values obtained only by experiment
+electronvolt	eV	energy	1 eV = 1.60217733 (49) 10-19 J	
+atomic mass unit	u	mass	1 u = 1.6605402 (10) 10-27 kg	
+astronomical unit	AU	length	1 AU = 1.49597870691 (30) 1011 m	
+Non-SI units whose use is not encouraged
+nautical mile	 	length	1 nautical mile = 1852 m	
+knot	 	speed	1 knot = 1 nautical mile per hour = (1852/3600) m/s	
+are	a	area	1 a = 1 dam2 = 100 m2	
+hectare	ha	area	1 ha = 100 a = 10000 m2	
+bar	bar	pressure	1 bar = 105 Pa	
+a*ngstr m, angstrom	A*	length	1 A* = 0.1 nm = 10-10 m	
+barn	b	area	1 b = 10-28 m2	
+SI prefixes
+SI defines a number of SI prefixes to be used with the units: these combine with any unit name to give subdivisions and multiples. For example, the prefix kilo denotes a multiple of a thousand, so the kilometre is 1000 metres, the kilogram 1000 grams, and so on. The prefixes are never combined; a millionth of a kilogram is a milligram, and not a ‘microkilogram’.
+The following SI prefixes can be used to prefix any of the above units to produce a multiple or submultiple of the original unit. This includes the degree Celsius (e.g. “1.2 m°C”); however, to avoid confusion, prefixes are not used with the time-related unit symbols min (minute), h (hour), d (day). They are not recommended for use with the angle-related symbols ° (degree), ‘ (minute of arc), and “ (second of arc), but for astronomical usage, they are sometimes used with seconds of arc.
+SI prefixes
+10n	Prefix	Symbol	Short scale	Long scale	Decimal equivalent
+1024	yotta	Y	Septillion	Quadrillion	1 000 000 000 000 000 000 000 000
+1021	zetta	Z	Sextillion	Trilliard (thousand trillion)	1 000 000 000 000 000 000 000
+1018	exa	E	Quintillion	Trillion	1 000 000 000 000 000 000
+1015	peta	P	Quadrillion	Billiard (thousand billion)	1 000 000 000 000 000
+1012	tera	T	Trillion	Billion	1 000 000 000 000
+109	giga	G	Billion	Milliard (thousand million)	1 000 000 000
+106	mega	M	Million	1 000 000
+103	kilo	k	Thousand	1 000
+102	hecto	h	Hundred	100
+101	deca, deka	da	Ten	10
+100	none	none	One	1
+10-1	deci	d	Tenth	0.1
+10-2	centi	c	Hundredth	0.01
+10-3	milli	m	Thousandth	0.001
+10-6	micro	�	Millionth	0.000 001
+10-9	nano	n	Billionth	Milliardth	0.000 000 001
+10-12	pico	p	Trillionth	Billionth	0.000 000 000 001
+10-15	femto	f	Quadrillionth	Billiardth	0.000 000 000 000 001
+10-18	atto	a	Quintillionth	Trillionth	0.000 000 000 000 000 001
+10-21	zepto	z	Sextillionth	Trilliardth	0.000 000 000 000 000 000 001
+10-24	yocto	y	Septillionth	Quadrillionth	0.000 000 000 000 000 000 000 001
+</pre>					
+
+
+</ul>
+</div>
+<br>
+
+<div id="info2" class="container para2">
+<ul>
+  <h3>Metric System : An article describing the differences between the various metric systems.</h3>
+  <h4>Metric system</h4>
+  A metric system is a system of units for measurement developed in late 18th century France with decimal multipliers. In the early metric system there were two fundamental or base units, the metre and the kilogram, for length and mass. Other units were derived from these two fundamental units. <br>
+  Multiples and submultiples of metric units are related by powers of ten; the names for these are formed with prefixes. This relationship is compatible with the decimal system of numbers and it contributes greatly to the convenience of metric units.<br>
+  As the result of scientific progress, refinements, and different choices of base units, there have been a number attempts at creating metric systems. The modern (modern meaning post-1960) metric system is now widely used throughout the world and is called the International System of Units (SI).<br>
+  <h4>History</h4>
+  Scientists, chiefly in France, had been advocating and discussing a decimal system of measurement based on natural units since at least 1640. It had some support by French monarchs. The first official adoption of such a system occured in France in 1791 after the French Revolution of 1789. The creators of this metric system tried to choose units that were logical and practical. The revolution gave an opportunity for drastic change with an official ideology of "pure reason". It was proposed as a considerable improvement over the inconsistent collection of customary units that existed before. The value of these units often depended on the region. <br>
+  The adoption of the metric system in France was slow, but its desirability as an international system was recognised by geodesists and others. Since then a number of variations on the system evolved. Their use spread throughout the world, first to the non-English-speaking countries, and more recently to the English speaking countries.
+  On the 20th of May 1875 an international treaty known as the Convention du Mètre (Metre Convention) was signed by 17 states. This treaty established the following organisations to conduct international activities relating to a uniform system for measurements:<br>
+  1.	Conf rence g n rale des poids et mesures (CGPM), an intergovernmental conference of official delegates of member nations and the supreme authority for all actions; <br>
+  2.	Comit  international des poids et mesures (CIPM), consisting of selected scientists and metrologists, which prepares and executes the decisions of the CGPM and is responsible for the supervision of the International Bureau of Weights and Measures;<br>
+  3.	Bureau international des poids et mesures (BIPM), a permanent laboratory and world centre of scientific metrology, the activities of which include the establishment of the basic standards and scales of the principal physical quantities and maintenance of the international prototype standards.<br>
+  <h4>Metric systems other than the 'modern metric system' (SI)</h4>
+  <b>The original French system</b> <br>
+  The original French system somewhat continued the tradition of having separate base units for geometrically related dimensions, i.e. metre for lengths, are (100 m²) for areas, stere (1 m³) for volumes and dry capacities and litre (1 dm³) for liquid capacities. The base unit of mass was the gram it also included only few prefixes, <br>
+  Several national variants existed thereof with aliases for some common subdivisions. In general this entailed in redefinition of other units in use, e.g. 500-gram pounds or 10-kilometre miles. An example of these is mesures usuelles (or metrified English unit though never officially adopted). However its debatable whether such systems are true metric systems. <br>
+  <b>Centimetre-gram-second systems</b> <br>
+  Early on in the history of the metric system various centimetre gram second system of units (CGS) had been in use. These units were particularly convenient in science and technology. <br>
+  <b>Metre-kilogram-second systems</b> <br>
+  Later metric systems were based on the metre, kilogram and second (MKS) to improve the value of the units for practical applications. MKSC, metre-kilogram-second-coulomb systems and MKSA, metre-kilogram-second-ampere systems are extentions of these. <br>
+  The International System of Units (Système international d'units or SI) is the current international standard metric system and the system most widely used around the world. It is based on the metre, kilogram, second, ampere, kelvin, candela and mole. <br>
+  <b>Metre-tonne-second systems</b> <br>
+  The metre-tonne-second system of units (MTS) was based on the metre, tonne and second. It was invented in France and mostly used in the Soviet Union from 1933 to 1955. <br>
+  <b>Gravitational systems</b> <br>
+  Gravitational systems use the kilogram-force as a base unit of force, with mass measured in a unit known as the hyl, TME, mug or metric slug.<br>
+  <h4>Spelling variations</h4>
+  Several nations, notably the United States, typically use the spellings 'meter' and 'liter' instead of 'metre' and 'litre'. This is in keeping with standard American English spelling (for example, Americans also use 'center' rather than 'centre,' using the latter only rarely for its stylistic implications; see also American and British English differences). In addition, the official US spelling for the SI prefix 'deca' is 'deka'.<br>
+  The US government has approved these spellings for official use. In scientific contexts only the symbols are used; since these are universally the same, the differences do not arise in practice in scientific use.<br>
+  The unit 'gram' is also sometimes spelled 'gramme' in English-speaking countries other than the United States, though that is an older spelling and use is declining.
+  This article is available under the terms of the GNU Free Documentation License. Original article can be found here.
+  
+  
+</ul>
+</div>
+<br>
+
+<div id="info3" class="container para2">
+<ul>
+  <h3>
+    The meter An article defining the meter as used in the metric system, both past and present.
+  </h3>
+    
+<h3>Metre</h3>
+The metre [French spelling], or meter [English spelling] (symbol: m) is the SI base unit of length. It is defined as the length of the path travelled by light in absolute vacuum during a time interval of 1/299,792,458 of a second. <br>
+Adding SI prefixes to metre creates multiples and submultiples; for example kilometre (1000 metres; kilo- = 1000) and nanometre (one billionth of a metre; nano- = 1 / 1 000 000 000). <br>
+<h3>Conversions</h3>
+1 metre is equivalent to: <br>
+<li>exactly 1/0.9144 yards (approximately 1.0936 yards)</li>
+<li>exactly 1/0.3048 feet (approximately 3.2808 feet)</li>
+<li>exactly 10000/254 inches (approximately 39.370 inches)</li>
+<h3>History</h3>
+The word itself is from the Greek metron (μετρον), "a measure" via the French metre. Its first recorded usage in English is from 1797.<br>
+In the eighteenth century, there were two favoured approaches to the definition of the standard unit of length. One suggested defining the metre as the length of a pendulum with a half-period of one second. The other suggested defining the metre as one ten-millionth of the length of the earth's meridian along a quadrant (one-fourth the polar circumference of the earth). In 1791, the French Academy of Sciences selected the meridional definition over the pendular definition because of the slight variation of the force of gravity over the surface of the earth, which affects the period of a pendulum. In 1793, France adopted the metre, with this definition, as its official unit of length. Although it was later determined that the first prototype metre bar was short by a fifth of a millimetre due to miscalculation of the flattening of the earth, this length became the standard. So, the circumference of the Earth through the poles is approximately forty million metres.<br>
+<div>
+International Prototype Metre standard bar made of platinum-iridium. This was the standard until 1960, when the new SI system used a krypton-spectrum measurement as the base. In 1983 the current metre was defined by a relationship to the speed of light in a vacuum. <br>
+</div>
+In the 1870s and in light of modern precision, a series of international conferences were held to devise new metric standards. The Metre Convention (Convention du Mètre) of 1875 mandated the establishment of a permanent International Bureau of Weights and Measures (BIPM: Bureau International des Poids et Mesures) to be located in Sèvres, France. This new organisation would preserve the new prototype metre and kilogram when constructed, distribute national metric prototypes, and would maintain comparisons between them and non-metric measurement standards. This organisation created a new prototype bar in 1889 at the first General Conference on Weights and Measures (CGPM: Conference Gnrale des Poids et Mesures), establishing the International Prototype Metre as the distance between two lines on a standard bar of an alloy of ninety percent platinum and ten percent iridium, measured at the melting point of ice. <br>
+In 1893, the standard metre was first measured with an interferometer by Albert A. Michelson, the inventor of the device and an advocate of using some particular wavelength of light as a standard of distance. By 1925, interferometry was in regular use at the BIPM. However, the International Prototype Metre remained the standard until 1960, when the eleventh CGPM defined the metre in the new SI system as equal to 1,650,763.73 wavelengths of the orange-red emission line in the electromagnetic spectrum of the krypton-86 atom in a vacuum. The original international prototype of the metre is still kept at the BIPM under the conditions specified in 1889. <br>
+To further reduce uncertainty, the seventeenth CGPM of 1983 replaced the definition of the metre with its current definition, thus fixing the length of the metre in terms of time and the speed of light: <br>
+<pre>
+The metre is the length of the path travelled by light in vacuum during a time interval of 1/299 792 458 of a second.
+</pre>
+Note that this definition exactly fixes the speed of light in a vacuum at 299,792,458 metres per second. Definitions based on the physical properties of light are more precise and reproducible because the properties of light are considered to be universally constant. <br>
+<h3>Timeline of definition</h3>
+<li>1790 May 8  The French National Assembly decides that the length of the new metre would be equal to the length of a pendulum with a half-period of one second.</li>
+<li>1791 March 30 The French National Assembly accepts the proposal by the French Academy of Sciences that the new definition for the metre be equal to one ten-millionth of the length of the earth's meridian along a quadrant (one-fourth the polar circumference of the earth).</li>
+<li>1795  Provisional metre bar constructed of brass.</li>
+<li>1799 December 10  The French National Assembly specifies that the platinum metre bar, constructed on 23 June 1799 and deposited in the National Archives, as the final standards.</li>
+<li>1889 September 28  The first CGPM defines the length as the distance between two lines on a standard bar of an alloy of platinum with ten percent iridium, measured at the melting point of ice.</li>
+<li>1927 October 6 The seventh CGPM adjusts the definition of the length to be the distance, at 0 °C, between the axes of the two central lines marked on the prototype bar of platinum-iridium, this bar being subject to one standard atmosphere of pressure and supported on two cylinders of at least one centimetre diameter, symmetrically placed in the same horizontal plane at a distance of 571 millimetres from each other.</li>
+<li>1960 October 20 The eleventh CGPM defines the length to be equal to 1,650,763.73 wavelengths in vacuum of the radiation corresponding to the transition between the 2p10 and 5d5 quantum levels of the krypton-86 atom.</li>
+<li>1983 October 21 The seventeenth CGPM defines the length to be distance travelled by light in vacuum during a time interval of 1/299 792 458 of a second.</li>
+<h3>SI multiples</h3>
+<pre>
+Multiple	Name	Symbol		Multiple	Name	Symbol
+10 <sup>0</sup> metre	m		 	 	 
+10 <sup>1</sup>	decametre	dam		10 <sup>-1</sup>	decimetre	dm
+10 <sup>2</sup>	hectometre	hm		10 <sup>-2</sup>	centimetre	cm
+10 <sup>3</sup>	kilometre	km		10 <sup>-3</sup>	millimetre	mm
+10 <sup>6</sup>	megametre	Mm		10 <sup>-6</sup>	micrometre	�m
+10 <sup>9</sup>	gigametre	Gm		10 <sup>-9</sup>	nanometre	nm
+10 <sup>12</sup>	terametre	Tm		10 <sup>-12</sup>	picometre	pm
+10 <sup>15</sup>	petametre	Pm		10 <sup>-15</sup>	femtometre	fm
+10 <sup>18</sup>	exametre	Em		10 <sup>-18</sup>	attometre	am
+10 <sup>21</sup>	zettametre	Zm		10 <sup>-21</sup>	zeptometre	zm
+10 <sup>24</sup>	yottametre	Ym		10 <sup>-24</sup>	yoctometre	ym
+
+</pre>
+
+</ul>
+</div>
+<br>
+
+<div id="info4" class="container para2">
+<ul>
+  <h3>
+    Traditional U.S. Units: An article describing the traditional units of measurement used throughout the United States.
+  </h3>
+  <h3>U.S. customary units</h3>
+The U.S. customary units, commonly known in the United States as English units or standard units, are the non-SI (non-metric) units of measurement that are currently used in the U.S., in some cases alongside the International System of Units. This system of units is similar to, but not to be confused with, the Imperial system still used in the United Kingdom. Both systems derive from the evolution of local units over the centuries as a result of standardization efforts in England; the local units themselves mostly trace back to Roman and Anglo-Saxon units. Today, U.S. customary units are defined in terms of SI units. <br>
+The official policy of the United States government is to designate the metric system of measurement as the preferred system of weights and measures for U.S. trade and commerce. This process is known as metrication, and is evident in labeling requirements on food products, for example. However, for various reasons, customary units are still widely used on consumer products and in industrial manufacturing; only in specific scientific contexts are SI units always preferred. Since everyday weights and measures are mostly non-SI, children in U.S. public schools are generally taught customary units before SI, although many schools are now attempting to teach SI units at an earlier age.
+In most Commonwealth countries, such as Australia and New Zealand, where metrication has been more forcefully imposed and has encountered less resistance from industry and consumer market forces, metrication is relatively complete, although some informal usage of non-SI units remains, particularly in Canada. Although increasingly metric, the UK has taken some time to change over, and retains use of non-SI units, particularly in informal situations. In more populated and developed British colonies, such as India, existing local weights and measures had been redefined based upon English units; some of which are still in limited use. <br>
+Other countries have had customary units of their own, sometimes very similar in root (Germanic, Roman), name and value to the ones listed below foot or pound, for instance but frequently, similar terms designate quite different sizes. For example, miles ranged from 1 to 10 kilometers. The standardization of these units was of varying quality, but was often comparable to or better than the U.S. customary system of the 19th century. Most were later redefined in terms of kilogram and meter. Often, unlike English units, they were rounded to "nice" SI values, leading to their use in colloquial speech, alongside SI terms, into the present day. <br>
+Historically, a wide range of non-SI units have been used in the United States. and United Kingdom, and in England before that, but many of these have fallen into disuse. This article only deals with the units commonly used or officially defined in the United States. <br>
+<h3>Units of length</h3>
+The system for measuring length in the United States' customary system is based on the inch, foot, yard, and mile. However, for each of these units there exist two slightly different definitions, yielding two different systems of measure - international measure, and U.S. survey measure. The relationships between the different units within each measure is the same, but each measure has a slightly different definition in terms of metric units. <br>
+One inch international measure is exactly 25.4 millimeters, while one inch U.S. survey measure is defined so that 39.37 inches is exactly 1 meter. For most applications, the difference is insignificant (about 3 millimeter per mile). International measure is used for everyday use, engineering, and commerce in the United States, while survey measure is used only for surveying. <br>
+International measure uses the same definition of the units involved as is used in the UK and other Commonwealth countries. U.S. survey measure uses an older definition of these units which the United States used prior to adopting international measure. <br>
+<pre>
+•	1 inch (in) = 25.4 mm 
+•	1 foot (ft) = 12 in = 30.48 cm 
+•	1 yard (yd) = 3 ft = 91.44 cm
+•	1 mile (mi) = 5280 ft = 1760 yd = 1.609344 km
+•	1 rod (unit) (rd) (also called pole or perch) = 16.5 ft = 5.0292 m
+•	1 furlong (fur) = 40 rd = 660 ft = 201.168 m
+•	1 mile (survey) = 8 fur = 5280 ft ≈ 1.609347 km
+Sometimes, for surveying purposes, units known as Gunther's Chain Measure (or equivalently Surveyor's Chain Measure) are used. These units are defined by survey feet as follows:
+•	1 link (li) = 7.92 in = 0.66 ft = 0.001 fur (approx. 201.168 mm)
+•	1 chain (ch) (Gunter's) = 100 li = 66 ft (approx. 20.1168 m)
+To measure depths at sea, fathoms are used:
+•	1 fathom = 6 feet = 1.8288 m
+•	1 cable length = 120 fathoms = 720 feet = 219.456 m (US Navy definition, there are others)
+</pre>
+<h3>Units of area </h3>
+The units of area in the U.S. customary system are mostly based on the units of length squared, e.g., square inch (sq in, 645.16 mm²). Since the U.S. customary system has two differing definitions of the foot (international and survey), there are also two differing definitions for the square foot. <br>
+<pre>
+•	1 square foot (sq ft) = 144 sq in = 929.0304 cm²
+•	1 square rod (sq rd) = 272.25 sq ft = 25.29285264 m²
+•	1 acre = 10 sq ch = 1 fur  1 ch = 160 sq rd = 43,560 sq ft = 4046.8564224 m²
+•	1 square mile (sq mi) = 27,878,400 sq ft = 3,097,600 sq yd = 640 acres = 2.589988110336 km²
+</pre>
+<br>
+The Public Land Survey System, used to divide land in most of the United States, uses the survey mile to divide land into regular square parcels, such "sections" and "townships." However, these terms aren't used for general area measurement, instead used to indicate particular parcels of land in a rectangular grid.<br>
+<h3>Units of capacity and volume</h3>
+The cubic inch, cubic foot and cubic yard are commonly used for measuring volume. In addition, there is one group of units for measuring volumes of liquids, and one for measuring volumes of dry material. <br>
+Other than the cubic foot, cubic inch and cubic yard, these units are differently sized from the units in the Imperial system, although the names of the units are similar. Also, while the U.S. has separate systems for measuring the volumes of liquids and dry material, the Imperial system has one set of units for both.<br>
+Technically speaking, since these units are defined in terms of the inch, it would make a difference whether international or survey measure was used. However, in practice, the difference between the two definitions would be imperceptible, and in any case in defining volumes international measure is used.<br>
+<b>Volume in general</b> <br>
+<pre>
+•	1 cubic inch (in³ or cu in) = 16.387064 ml (or cm³)
+•	1 cubic foot (ft³ or cu ft) = 1728 cu in ≈ 28.317 L
+•	1 cubic yard (yd³ or cu yd) = 27 cu ft ≈ 7.646 hL
+•	1 acre-foot = 43,560 cu ft ≈ 325,851 gallons ≈ 12,334.818 m³
+</pre>
+<b>Liquid volume</b> <br>
+<pre>
+•	1 minim (min) = 1/480 fl oz ≈ 61.612 L
+•	1 fluid dram (fl dr) = 1/8 fl oz = 60 min ≈ 3.697 mL
+•	1 fluid ounce (fl oz) = 1/128 gal = 8 fl dr ≈ 29.574 mL
+•	1 gill (gi) = 7.21875 cu in = 4 fl oz ≈ 118.294 mL
+•	1 cup = 2 gi = 8 fl oz ≈ 236.588 mL
+•	1 pint (pt) = 2 cups = 4 gi = 16 fl oz ≈ 473.176 mL
+•	1 fifth = 25.6 fl oz ≈ 757.082 mL
+•	1 quart (qt) = 2 pt = 32 fl oz ≈ 946.353 mL
+•	1 gallon (gal) = 231 cu in = 4 qt = 128 fl oz = 3.785411784 L
+The gill is basically a paper unit which is never actually used in the United States. Distilled liquor and wine were bottled in fifths until 1973; when the term "fifth" is used now it almost always means 750 mL.
+</pre>
+<b>Dry volume</b> <br>
+<pre>
+•	1 pint (pt) ≈ 550.610 mL
+•	1 quart (qt) = 2 pt ≈ 1.101 L
+•	1 gallon (gal) = 4 qt = 268.8025 in³ = 4.404 842 803 2 L
+•	1 peck (pk) = 8 qt = 2 gal ≈ 8.81 L
+•	1 bushel (bu) = 2150.42 cu in = 4 pk ≈ 35.239 L
+</pre>
+<h3>Units of mass</h3>
+There have historically been four different English systems of mass: Tower weight, Troy weight, avoirdupois weight, and apothecaries weight. Tower weight fell out of use (due to legal prohibition) centuries ago, and was never used in the United States. Troy weight is still used to weigh precious metals. Apothecaries weight, once used in pharmacy, has been largely replaced by metric measurements. Avoirdupois weight is the primary system of mass in the U.S. customary system. <br>
+The Avoirdupois units are legally defined as measures of mass, but the names of these units are sometimes applied to measures of force. For instance, in most contexts, the pound avoirdupois is used as a unit of mass, but in the realm of physics, the term "pound" can represent "pound-force" (a unit of force properly abbreviated as "lbf"). <br> 
+Troy weight, avoirdupois weight and apothecaries weight are all defined in terms of the same basic unit, the grain, which is the same in all three systems. However, while each system has some overlap in the names of their units of measure (all have ounces and pounds), the relationship between the grain and these other units within each system varies. For example, in apothecaries and troy weight, the pound and ounce are the same, but are different from the pound and ounce in avoirdupois, in terms of their relationships to grains and to each other. The systems also have different units between the grain and ounce (apothecaries has scruple and dram, troy has pennyweight, and avoirdupois has just dram). The dram was once known as the drachm. <br>
+To alleviate confusion, it is typical when publishing non-avoirdupois weights to mention the name of the system along with the unit. Precious metals, for example, are often weighed in "troy ounces", because just "ounce" would be more likely to be assumed to mean an ounce avoirdupois. <br>
+The pound avoirdupois, which forms the basis of the U.S. customary system of mass, is defined as exactly 453.59237 grams. All the other units of mass are defined in terms of it. <br>
+For the pound and smaller units, the U.S. customary system and the British Imperial system are identical. However, they differ when dealing with units larger than the pound. The definition of the pound avoirdupois in the British Imperial system is identical to that in the U.S. customary system. <br>
+<b>Avoirdupois weight</b> <br>
+<pre>
+•	1 grain (gr) = 64.79891 mg
+•	1 dram (dr) = 27 11/32 gr = 1/16 oz ≈ 1.772 g
+•	1 ounce (oz) = 16 dr = 437.5 gr ≈ 28.35 g
+•	1 pound (lb) = 16 oz = 7000 gr = 453.59237 g
+•	1 hundredweight (cwt) = 100 lb = 45.359 kg
+•	1 ton (t) = 20 cwt = 2000 lb = 907.18474 kg ≈ 0.907 t
+The ton and hundredweight above are referred to as the short ton, and the short hundredweight, to distinguish them from the British Imperial ton and hundredweight, which are larger and hence are referred to as the long ton and long hundredweight. The long ton has limited use in the United States.
+•	1 long hundredweight = 112 lb ≈ 50.802 kg
+•	1 long ton = 20 long cwt = 2240 lb ≈ 1016.047 kg ≈ 1.016 t
+</pre>
+<b>Apothecaries' weight</b> <br>
+The grain has the same definition as for avoirdupois weight.
+•	1 scruple (s ap) = 20 gr ≈ 1.296 g
+•	1 dram apothecaries (dr ap) = 3 s ap ≈ 3.888 g
+•	1 ounce apothecaries (oz ap) = 1 oz t = 8 dr ap = 480 gr ≈ 31.103 g
+•	1 pound apothecaries (lb ap) = 1 lb t = 12 oz ap = 5760 gr ≈ 373.242 g
+The pound and ounce apothecaries are identical to the pound and ounce troy.
+<b>Troy weight</b> <br>
+The grain has the same definition as for Avoirdupois weight.<br>
+<pre>
+•	1 pennyweight (dwt) = 24 gr ≈ 1.555 g
+•	1 ounce troy (oz t) = 20 dwt = 480 gr ≈ 31.103 g
+•	1 pound troy (lb t) = 12 oz t = 5760 gr ≈ 373.242 g
+</pre>
+<h3>Cooking measures</h3>
+The most common cooking weights and measures in the U.S. are as follows: <br>
+<pre>
+•	1 teaspoon = 1/3 tbsp = 1/6 fl oz ≈ 5 mL
+•	1 tablespoon (tbsp) = 1/2 fl oz = 4 fl dr ≈ 15 mL
+•	1 cup = 8 fl oz ≈ 240 mL
+•	1 stick (of butter) = 1/4 lb = 4 oz ≈ 115 g
+</pre>
+<h3>Grain measures</h3>
+These are derived from the volume measures and there have been more for other crops.<br>
+<pre>
+•	1 bushel (maize) = 56 lb ≈ 25.401 kg
+•	1 bushel (wheat) = 60 lb ≈ 27.216 kg
+</pre>
+<h3>Units of temperature</h3>
+Traditionally, degrees Fahrenheit are used in the United States to measure temperatures<br>
+<pre>.
+•	Pure water freezes at 32 °F and boils at 212 °F at 1 atm.
+•	Water saturated with common salt freezes at -6.02 °F.
+•	Conversion formula: 
+
+</pre>
+
+</ul>
+</div>
+</div>
+<br> 
+</div>
+</div>
+</div>
+
+  
+    <div class='lentop'>
+      <div>
+      <img src='img/top.png'/>
+      </div>
+      </div>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+        <script  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-animate.js"></script>
+
+        <script>
+          var app = angular.module("myApp", ['ngAnimate']);
+      </script>
+        
+                <script src="JS/up.js"></script>
+                <script src="JS/label.js"></script>
+                <script src="JS/lognin.js"></script>
+                <script src="JS/dropdown.js"></script>
+                <script src="JS/currency.js"></script>
+                <script src="JS/toggle.js"></script>
+</body>
+</html>
