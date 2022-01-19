@@ -63,152 +63,128 @@
 <h1 class="fontCon">Currency</h1>
 <div class="cvstb"> 
 <div>
-  select:<select ng-model="mySelect" class="fl4">
-   <option value="q1">Australian dollar</option>
-   <option value="q2">US dollar</option>
-   <option value="q3">Euro</option>
-   <option value="q4">Rupi</option>
-   <option value="q5">VND</option>
- </select>
- <div ng-switch="mySelect">
- <div ng-switch-when="q1">
-  <p class="fl1">
-      <label>AUD:</label>
-      <input id="inputFeet" type="number" placeholder="Australian dollar" oninput="LengthConverterAUD(this.value)" onchange="LengthConverter(this.value)">
-    </p>
-    <div class="fl2">
-       select:&nbsp;&nbsp;<select ng-model="mySelect" class="fl4">
-        <option value="q1">US dollar</option>
-        <option value="q2">Euro</option>
-        <option value="q3">Rupi</option>
-        <option value="q4">VND</option>
+  <div class="conv__container conv__form">
+    <div class="conv">
+      <select id="currency-one" >
+        <option value="AED">AED (United Arab Emirates Dirham) </option>
+        <option value="ARS">ARS (Peso Argentina) </option>
+        <option value="AUD">AUD (Đô la Úc) </option>
+        <option value="BGN">BGN (Lev Bulgaria) </option>
+        <option value="BRL">BRL (Real Brazil) </option>
+        <option value="BSD">BSD (Đô la Bahamas) </option>
+        <option value="CAD">CAD (Đô la Canada) </option>
+        <option value="CHF">CHF (Swiss Franc) </option>
+        <option value="CLP">CLP (Peso Chile) </option>
+        <option value="CNY">CNY (Nhân dân tệ) </option>
+        <option value="COP">COP (Peso Colombia) </option>
+        <option value="CZK">CZK (Czech Koruny) </option>
+        <option value="DKK">DKK (Danish Kroner) </option>
+        <option value="DOP">DOP (Peso Dominica) </option>
+        <option value="EGP">EGP (Egyptian Pounds) </option>
+        <option value="EUR">EUR (Euro) </option>
+        <option value="FJD">FJD (Đô la Fiji) </option>
+        <option value="GBP">GBP (Bảng Anh) </option>
+        <option value="GTQ">GTQ (Quetzal Guatemala) </option>
+        <option value="HKD">HKD (Đô la Hong Kong) </option>
+        <option value="HRK">HRK (Croatian Kunas) </option>
+        <option value="HUF">HUF (Forint Hungary) </option>
+        <option value="IDR">IDR (Rupiah Indonesia) </option>
+        <option value="ILS">ILS (Shekel Israel) </option>
+        <option value="INR">INR (Indian Rupees) </option>
+        <option value="ISK">ISK (Icelandic Kronur) </option>
+        <option value="JPY">JPY (Yên Nhật) </option>
+        <option value="KRW">KRW (Won)</option>
+        <option value="KZT">KZT (Tenge Kazakhstan) </option>
+        <option value="MXN">MXN (Peso Mexico) </option>
+        <option value="MYR">MYR (Malaysian Ringgits) </option>
+        <option value="NOK">NOK (Norwegian Kroner) </option>
+        <option value="NZD">NZD (Đô la New Zealand) </option>
+        <option value="PAB">PAB (Balboa Panama) </option>
+        <option value="PEN">PEN (Nuevo Sol Peru) </option>
+        <option value="PHP">PHP (Peso Philippines) </option>
+        <option value="PKR">PKR (Rupee Pakistan) </option>
+        <option value="PLN">PLN (Polish Zlotych) </option>
+        <option value="PYG">PYG (Paraguayan Guarani) </option>
+        <option value="RON">RON (Leu Romania) </option>
+        <option value="RUB">RUB (Russian Rubles) </option>
+        <option value="SAR">SAR (Saudi Arabian Riyals) </option>
+        <option value="SEK">SEK (Swedish Kronor) </option>
+        <option value="SGD">SGD (Đô la Singapore) </option>
+        <option value="THB">THB (Thai Baht) </option>
+        <option value="TRY">TRY (Turkish Lire) </option>
+        <option value="TWD">TWD (Tân Đài tệ) </option>
+        <option value="UAH">UAH (Hryvnia Ukraina) </option>
+        <option value="USD" selected>USD (Đô la Mỹ) </option>
+        <option value="UYU">UYU ((Peso Uruguay) </option>
+        <option value="VND">VND (Việt Nam Đồng) </option>
+        <option value="ZAR">ZAR (South African Rand) </option>
       </select>
-      <div ng-switch="mySelect" class="fl3">
-      <div ng-switch-when="q1"><p>USD: <input type="number" id="outputUSD" disabled></p></div>
-      <div ng-switch-when="q2"><p>EUR: <input type="number" id="outputEuro" disabled></p></div>
-      <div ng-switch-when="q3"><p>INR: <input type="number" id="outputRupi" disabled></p></div>
-      <div ng-switch-when="q4"><p>VND: <input type="number" id="outputVND" disabled></p></div>
-      </div>
+      <input type="number" id="amount-one" placeholder="0" value="1" />
     </div>
-    <div hidden>
-     <p>USD: <span id="outputUSD"></span></p>
-      <p>Euro: <span id="outputEuro"></span></p>
-      <p>Rupi: <span id="outputRupi"></span></p>
-      <p>VND: <span id="outputVND"></span></p>
+
+    <div class="swap-rate-container">
+      <button class="btn" id="swap">Swap</button>
+      <div class="rate" id="rate"></div>
     </div>
- </p></div>
- <div ng-switch-when="q2"><p>
-    
-    <p class="fl1">
-     <label>USD:</label>
-     <input id="inputFeet" type="number" placeholder="US dollar" oninput="LengthConverterUSD(this.value)" onchange="LengthConverter(this.value)">
-   </p>
-   <div class="fl2a1">
-     &nbsp;&nbsp;select:<select ng-model="mySelect" class="fl4">
-       <option value="q1">Australian dollar</option>
-       <option value="q2">Euro</option>
-       <option value="q3">Rupi</option>
-       <option value="q4">VND</option>
-     </select>
-     <div ng-switch="mySelect" class="fl3">
-     <div ng-switch-when="q1"><p>AUD: <input  type="number" id="outputAUD" disabled></p></div>
-     <div ng-switch-when="q2"><p>EUR: <input type="number" id="outputEuro" disabled></p></div>
-     <div ng-switch-when="q3"><p>INR: <input type="number" id="outputRupi" disabled></p></div>
-     <div ng-switch-when="q4"><p>VND: <input type="number" id="outputVND" disabled></p></div>
-     </div>
-   </div>
-   <div hidden>
-    <p>AUD: <span id="outputAUD"></span></p>
-    <p>Euro: <span id="outputEuro"></span></p>
-    <p>Ruppe: <span id="outputRupi"></span></p>
-    <p>VND: <span id="outputVND"></span></p>
-   </div>
- 
 
- </p></div>
- <div ng-switch-when="q3"><p>
-
-  <p class="fl1">
-    <label>EUR:</label>
-    <input id="inputFeet" type="number" placeholder="Euro" oninput="LengthConverterEUR(this.value)" onchange="LengthConverter(this.value)">
-  </p>
-  <div class="fl2a1">
-    &nbsp;&nbsp;select:<select ng-model="mySelect" class="fl4">
-      <option value="q1">Australian dollar</option>
-      <option value="q2">US dollar</option>
-      <option value="q3">Rupi</option>
-      <option value="q4">VND</option>
-    </select>
-    <div ng-switch="mySelect" class="fl3">
-      <div ng-switch-when="q1"><p>AUD: <input  type="number" id="outputAUD" disabled></p></div>
-      <div ng-switch-when="q2"><p>USD: <input type="number" id="outputUSD" disabled></p></div>
-      <div ng-switch-when="q3"><p>INR: <input type="number" id="outputRupi" disabled></p></div>
-      <div ng-switch-when="q4"><p>VND: <input type="number" id="outputVND" disabled></p></div>
-    </div>
-  </div>
-  <div hidden>
-    <p>AUD: <span id="outputAUD"></span></p>
-    <p>USD: <span id="outputUSD"></span></p>
-    <p>Ruppe: <span id="outputRupi"></span></p>
-    <p>VND: <span id="outputVND"></span></p>
-  </div>
-
-
- </p></div>
- <div ng-switch-when="q4"><p>
-  <p class="fl1">
-    <label>INR:</label>
-    <input id="inputFeet" type="number" placeholder="Rupi" oninput="LengthConverterINR(this.value)" onchange="LengthConverter(this.value)">
-  </p>
-  <div class="fl2a1">
-    &nbsp;&nbsp;select:<select ng-model="mySelect" class="fl4">
-      <option value="q1">Australian dollar</option>
-      <option value="q2">US dollar</option>
-      <option value="q3">Euro</option>
-      <option value="q4">VND</option>
-    </select>
-    <div ng-switch="mySelect" class="fl3">
-      <div ng-switch-when="q1"><p>AUD: <input  type="number" id="outputAUD" disabled></p></div>
-      <div ng-switch-when="q2"><p>USD: <input type="number" id="outputUSD" disabled></p></div>
-      <div ng-switch-when="q3"><p>EUR: <input type="number" id="outputEUR" disabled></p></div>
-      <div ng-switch-when="q4"><p>VND: <input type="number" id="outputVND" disabled></p></div>
+    <div class="conv">
+      <select id="currency-two">
+        <option value="AED">AED (United Arab Emirates Dirham) </option>
+        <option value="ARS">ARS (Peso Argentina) </option>
+        <option value="AUD">AUD (Đô la Úc) </option>
+        <option value="BGN">BGN (Lev Bulgaria) </option>
+        <option value="BRL">BRL (Real Brazil) </option>
+        <option value="BSD">BSD (Đô la Bahamas) </option>
+        <option value="CAD">CAD (Đô la Canada) </option>
+        <option value="CHF">CHF (Swiss Franc) </option>
+        <option value="CLP">CLP (Peso Chile) </option>
+        <option value="CNY">CNY (Nhân dân tệ) </option>
+        <option value="COP">COP (Peso Colombia) </option>
+        <option value="CZK">CZK (Czech Koruny) </option>
+        <option value="DKK">DKK (Danish Kroner) </option>
+        <option value="DOP">DOP (Peso Dominica) </option>
+        <option value="EGP">EGP (Egyptian Pounds) </option>
+        <option value="EUR" selected>EUR (Euro) </option>
+        <option value="FJD">FJD (Đô la Fiji) </option>
+        <option value="GBP">GBP (Bảng Anh) </option>
+        <option value="GTQ">GTQ (Quetzal Guatemala) </option>
+        <option value="HKD">HKD (Đô la Hong Kong) </option>
+        <option value="HRK">HRK (Croatian Kunas) </option>
+        <option value="HUF">HUF (Forint Hungary) </option>
+        <option value="IDR">IDR (Rupiah Indonesia) </option>
+        <option value="ILS">ILS (Shekel Israel) </option>
+        <option value="INR">INR (Indian Rupees) </option>
+        <option value="ISK">ISK (Icelandic Kronur) </option>
+        <option value="JPY">JPY (Yên Nhật) </option>
+        <option value="KRW">KRW (Won)</option>
+        <option value="KZT">KZT (Tenge Kazakhstan) </option>
+        <option value="MXN">MXN (Peso Mexico) </option>
+        <option value="MYR">MYR (Malaysian Ringgits) </option>
+        <option value="NOK">NOK (Norwegian Kroner) </option>
+        <option value="NZD">NZD (Đô la New Zealand) </option>
+        <option value="PAB">PAB (Balboa Panama) </option>
+        <option value="PEN">PEN (Nuevo Sol Peru) </option>
+        <option value="PHP">PHP (Peso Philippines) </option>
+        <option value="PKR">PKR (Rupee Pakistan) </option>
+        <option value="PLN">PLN (Polish Zlotych) </option>
+        <option value="PYG">PYG (Paraguayan Guarani) </option>
+        <option value="RON">RON (Leu Romania) </option>
+        <option value="RUB">RUB (Russian Rubles) </option>
+        <option value="SAR">SAR (Saudi Arabian Riyals) </option>
+        <option value="SEK">SEK (Swedish Kronor) </option>
+        <option value="SGD">SGD (Đô la Singapore) </option>
+        <option value="THB">THB (Thai Baht) </option>
+        <option value="TRY">TRY (Turkish Lire) </option>
+        <option value="TWD">TWD (Tân Đài tệ) </option>
+        <option value="UAH">UAH (Hryvnia Ukraina) </option>
+        <option value="USD">USD (Đô la Mỹ) </option>
+        <option value="UYU">UYU ((Peso Uruguay) </option>
+        <option value="VND">VND (Việt Nam Đồng) </option>
+        <option value="ZAR">ZAR (South African Rand) </option>
+      </select>
+      <input type="number" id="amount-two" placeholder="0" />
     </div>
   </div>
-  <div hidden>
-    <p>AUD: <span id="outputAUD"></span></p>
-    <p>USD: <span id="outputUSD"></span></p>
-    <p>Ruppe: <span id="outputEUR"></span></p>
-    <p>VND: <span id="outputVND"></span></p>
-  </div>
-
- </p></div>
- <div ng-switch-when="q5"><p>
-  <p class="fl1">
-    <label>VND:</label>
-    <input id="inputFeet" type="number" placeholder="VND" oninput="LengthConverterVND(this.value)" onchange="LengthConverter(this.value)">
-  </p>
-  <div class="fl2a1">
-    &nbsp;&nbsp;select:<select ng-model="mySelect" class="fl4">
-      <option value="q1">Australian dollar</option>
-      <option value="q2">US dollar</option>
-      <option value="q3">Euro</option>
-      <option value="q5">Rupi</option>
-    </select>
-    <div ng-switch="mySelect" class="fl3">
-      <div ng-switch-when="q1"><p>AUD: <input  type="number" id="outputAUD" disabled></p></div>
-      <div ng-switch-when="q2"><p>USD: <input type="number" id="outputUSD" disabled></p></div>
-      <div ng-switch-when="q3"><p>EUR: <input type="number" id="outputEUR" disabled></p></div>
-      <div ng-switch-when="q5"><p>INR: <input type="number" id="outputRupi" disabled></p></div>
-    </div>
-  </div>
-  <div hidden>
-    <p>AUD: <span id="outputAUD"></span></p>
-    <p>USD: <span id="outputUSD"></span></p>
-    <p>Ruppe: <span id="outputEUR"></span></p>
-    <p>VND: <span id="outputRupi"></span></p>
-  </div>
- </p></div>
- </div>
 </div>
 </div>
 

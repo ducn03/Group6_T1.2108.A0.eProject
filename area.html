@@ -63,107 +63,42 @@
 <h1 class="fontCon">Area</h1>
 <div class="cvstb"> 
 <div>
-  select:<select ng-model="mySelect" class="fl4">
-   <option value="q1">Square inches</option>
-   <option value="q2">Square feet</option>
-   <option value="q3">Square yards</option>
-   <option value="q4">Acres</option>
-   <option value="q5">Square miles</option>
- </select>
- <div ng-switch="mySelect">
- <div ng-switch-when="q1">
-  <p class="fl1">
-      <label>in<sup>2</sup>:</label>
-      <input id="inputFeet" type="number" placeholder="Square inches" oninput="LengthConverterin2(this.value)" onchange="LengthConverter(this.value)">
-    </p>
-    <div class="fl2">
-       select:&nbsp;&nbsp;<select ng-model="mySelect" class="fl4">
-        <option value="q1">square Milliliters</option>
+  <div class="conv__container conv__form">
+    <div class="conv conv__length">
+      <select id="currency-one">
+        <option value="A" selected>Are</option>
+        <option value="CM^2">CM^2(centimet vuông)</option>
+        <option value="DM^2">DM^2(decimet vuông)</option>
+        <option value="HA">HA(héc-ta)</option>
+        <option value="KM^2">KM^2(kilomet vuông)</option>
+        <option value="M^2">M^2(met vuông)</option>
+        <option value="NM^2">NM^2(nanomet vuông)</option>
+        <option value="MM^2">MM^2(milimet vuông)</option>
+        <option value="µM^2">µM^2(micromet vuông)</option>
       </select>
-      <div ng-switch="mySelect" class="fl3">
-      <div ng-switch-when="q1"><p>mm<sup>2</sup>: <input type="number" id="outputSqmilliliters" disabled></p></div>
-      </div>
+      <input type="number" id="amount-one" placeholder="0" value="1" />
     </div>
-    <div hidden>
-     <p>mm<sup>2</sup>: <span id="outputSqmilliliters"></span></p>
-    </div>
- </p></div>
- <div ng-switch-when="q2"><p>
-    
-  <p class="fl1">
-    <label>ft<sup>2</sup>:</label>
-    <input id="inputFeet" type="number" placeholder="Square feet" oninput="LengthConverterft2(this.value)" onchange="LengthConverter(this.value)">
-  </p>
-  <div class="fl2a1">
-    &nbsp;&nbsp;select:<select ng-model="mySelect" class="fl4">
-      <option value="q2">Square Meters</option>
-    </select>
-    <div ng-switch="mySelect" class="fl3">
-    <div ng-switch-when="q2"><p>m<sup>2</sup>:<input  type="number" id="outputSqmeter" disabled></p></div>
-    </div>
-  </div>
-  <div hidden>
-    <p>m<sup>2</sup>: <span id="outputSqmeter"></span></p>
-  </div>
 
- 
-
- </p></div>
- <div ng-switch-when="q3"><p>
-  <p class="fl1">
-    <label>yd<sup>2</sup>:</label>
-    <input id="inputFeet" type="number" placeholder="Yards" oninput="LengthConverteryd2(this.value)" onchange="LengthConverter(this.value)">
-  </p>
-  <div class="fl2a1">
-    &nbsp;&nbsp;select:<select ng-model="mySelect" class="fl4">
-      <option value="q3">Square Meters</option>
-    </select>
-    <div ng-switch="mySelect" class="fl3">
-    <div ng-switch-when="q3"><p>m<sup>2</sup>: <input type="number" id="outputSqmeter" disabled></p></div>
+    <div class="swap-rate-container">
+      <button class="btn" id="swap">Swap</button>
+      <div class="rate" id="rate"></div>
     </div>
-  </div>
-  <div hidden>
-    <p>m<sup>2</sup>: <span id="outputSqmeter"></span></p>
-  </div>
-  
 
- </p></div>
- <div ng-switch-when="q4"><p>
-  <p class="fl1">
-    <label>Ac:</label>
-    <input id="inputFeet" type="number" placeholder="Acres" oninput="LengthConverterAc(this.value)" onchange="LengthConverter(this.value)">
-  </p>
-  <div class="fl2a1">
-    &nbsp;&nbsp;select:<select ng-model="mySelect" class="fl4">
-      <option value="q4">Hectares</option>
-    </select>
-    <div ng-switch="mySelect" class="fl3">
-    <div ng-switch-when="q4"><p>ha: <input type="number" id="outputHa" disabled></p></div>
-    </div>
-  </div>
-  <div hidden>
-    <p>ha: <span id="outputHa"></span></p> 
-  </div>
- </p></div>
- <div ng-switch-when="q5"><p>
-    <p class="fl1">
-      <label>mi<sup>2</sup>:</label>
-      <input id="inputFeet" type="number" placeholder="Square miles" oninput="LengthConverterMi2(this.value)" onchange="LengthConverter(this.value)">
-    </p>
-    <div class="fl2a1">
-      &nbsp;&nbsp;select:<select ng-model="mySelect" class="fl4">
-        <option value="q5">Square kilometers</option>
+    <div class="conv conv__length">
+      <select id="currency-two">
+        <option value="A">Are</option>
+        <option value="CM^2">CM^2(centimet vuông)</option>
+        <option value="DM^2">DM^2(decimet vuông)</option>
+        <option value="HA">HA(héc-ta)</option>
+        <option value="KM^2" selected >KM^2(kilomet vuông)</option>
+        <option value="M^2">M^2(met vuông)</option>
+        <option value="NM^2">NM^2(nanomet vuông)</option>
+        <option value="MM^2">MM^2(milimet vuông)</option>
+        <option value="µM^2">µM^2(micromet vuông)</option>
       </select>
-      <div ng-switch="mySelect" class="fl3">
-      <div ng-switch-when="q5"><p>km<sup>2</sup>: <input type="number" id="outputSqkm" disabled></p></div>
-      </div>
+      <input type="number" id="amount-two" placeholder="0" />
     </div>
-    <div hidden>
-      <p>km<sup>2</sup>: <span id="outputSqkm"></span></p> 
-    </div>
-   </p></div>
- 
-</div>
+  </div>
 </div>
 </div>
 

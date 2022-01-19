@@ -1,18 +1,42 @@
-function LengthConverterin2(valNum) {
-    document.getElementById("outputSqmilliliters").value=(valNum*645.2).toFixed(3);
-};
+const currencyEl_one = document.getElementById('currency-one');
+const currencyEl_two = document.getElementById('currency-two');
+const amountEl_one = document.getElementById('amount-one');
+const amountEl_two = document.getElementById('amount-two');
 
-function LengthConverterft2(valNum) {
-    document.getElementById("outputSqmeter").value=(valNum*0.093).toFixed(3);
-};
+const rateEl = document.getElementById('rate');
+const swap = document.getElementById('swap');
 
-function LengthConverteryd2(valNum) {
-    document.getElementById("outputSqmeter").value=(valNum*0.836).toFixed(3);
-};
+// Text in select box to research
+function myNewFunction(sel) {
+  alert(sel.options[sel.selectedIndex].text);
+}
 
-function LengthConverterAc(valNum) {
-    document.getElementById("outputHa").value=(valNum*0.405).toFixed(4);
-};
-function LengthConverterMi2(valNum) {
-    document.getElementById("outputSqkm").value=(valNum*2.59).toFixed(4);
-};
+// Fetch exchange rates and update the dome
+function calculate() {
+  const currency_one = currencyEl_one.value;
+  const currency_two = currencyEl_two.value;
+
+  fetch(`API/api-area/${currency_one}.json`)
+    .then((res) => res.json())
+    .then((data) => {
+      //   console.log(data);
+      const rate = data.conversion_rates[currency_two];
+      rateEl.innerText = `1 ${currency_one} = ${rate} ${currency_two}`;
+
+      amountEl_two.value = (amountEl_one.value * rate).toFixed(12)
+    });
+}
+
+// Event Listeners
+currencyEl_one.addEventListener('change', calculate);
+amountEl_one.addEventListener('input', calculate);
+currencyEl_two.addEventListener('change', calculate);
+amountEl_two.addEventListener('input', calculate);
+swap.addEventListener('click', () => {
+  const temp = currencyEl_one.value;
+  currencyEl_one.value = currencyEl_two.value;
+  currencyEl_two.value = temp;
+  calculate();
+});
+
+calculate();

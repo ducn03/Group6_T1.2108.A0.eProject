@@ -62,84 +62,45 @@
 <h1 class="fontCon">Volume</h1>
 <div class="cvstb"> 
 <div>
-  select:<select ng-model="mySelect" class="fl4">
-   <option value="q1">fluid ounces</option>
-   <option value="q2">gallons</option>
-   <option value="q3">cubic feet</option>
-   <option value="q4">cubic yards</option>
- </select>
- <div ng-switch="mySelect">
- <div ng-switch-when="q1">
-    <p class="fl1">
-        <label>fl oz:</label>
-        <input id="inputFeet" type="number" placeholder="fluid ounces" oninput="LengthConverterFo(this.value)" onchange="LengthConverter(this.value)">
-      </p>
-      <div class="fl2">
-         select:&nbsp;&nbsp;<select ng-model="mySelect" class="fl4">
-          <option value="q1">Milliliters</option>
-        </select>
-        <div ng-switch="mySelect" class="fl3">
-        <div ng-switch-when="q1"><p>mL: <input type="number" id="outputMilliliters" disabled></p></div>
-        </div>
-      </div>
-      <div hidden>
-       <p>mL: <span id="outputMilliliters"></span></p>
-      </div>
- </p></div>
- <div ng-switch-when="q2"><p>
-    <p class="fl1">
-        <label>gal:</label>
-        <input id="inputFeet" type="number" placeholder="gallons" oninput="LengthConvertergal(this.value)" onchange="LengthConverter(this.value)">
-      </p>
-      <div class="fl2a1">
-         select:&nbsp;&nbsp;<select ng-model="mySelect" class="fl4">
-          <option value="q2">Liters</option>
-        </select>
-        <div ng-switch="mySelect" class="fl3">
-        <div ng-switch-when="q2"><p>L: <input type="number" id="outputLt" disabled></p></div>
-        </div>
-      </div>
-      <div hidden>
-       <p>L: <span id="outputLt"></span></p>
-      </div>
+  <div class="conv__container conv__form">
+    <div class="conv conv__length">
+      <select id="currency-one">
+        <option value="CL" selected>CL(Centilit)</option> 
+        <option value="CM^3">CM^3</option> 
+        <option value="DL">DL(Decalit)</option> 
+        <option value="DM^3">DM^3</option> 
+        <option value="KM^3">KM^3</option> 
+        <option value="L">L(Lít)</option>
+        <option value="M^3">M^3</option>
+        <option value="ML">ML(mililit)</option>  
+        <option value="MM^3">MM^3</option>
+        <option value="µL">µL</option>
+      </select>
+      <input type="number" id="amount-one" placeholder="0" value="1" />
+    </div>
 
- </p></div>
- <div ng-switch-when="q3"><p>
-    <p class="fl1">
-        <label>ft<sup>3</sup>:</label>
-        <input id="inputFeet" type="number" placeholder="Cubic feet" oninput="LengthConverterCf(this.value)" onchange="LengthConverter(this.value)">
-      </p>
-      <div class="fl2a1">
-         select:&nbsp;&nbsp;<select ng-model="mySelect" class="fl4">
-          <option value="q3">Cubic meters</option>
-        </select>
-        <div ng-switch="mySelect" class="fl3">
-        <div ng-switch-when="q3"><p>m<sup>3</sup>: <input type="number" id="outputCbmt" disabled></p></div>
-        </div>
-      </div>
-      <div hidden>
-       <p>m<sup>3</sup>: <span id="outputCbmt"></span></p>
-      </div>
- </p></div>
- <div ng-switch-when="q4"><p>
-    <p class="fl1">
-        <label>yd<sup>3</sup>:</label>
-        <input id="inputFeet" type="number" placeholder="Cubic yards" oninput="LengthConverteryd(this.value)" onchange="LengthConverter(this.value)">
-      </p>
-      <div class="fl2a1">
-         select:&nbsp;&nbsp;<select ng-model="mySelect" class="fl4">
-          <option value="q4">Cubic meters</option>
-        </select>
-        <div ng-switch="mySelect" class="fl3">
-        <div ng-switch-when="q4"><p>m<sup>3</sup>: <input type="number" id="outputCbmt" disabled></p></div>
-        </div>
-      </div>
-      <div hidden>
-       <p>m<sup>3</sup>: <span id="outputCbmt"></span></p>
-      </div>
- </p></div>
- 
-</div>
+    <div class="swap-rate-container">
+      <button class="btn" id="swap">Swap</button>
+      <div class="rate" id="rate"></div>
+    </div>
+
+    <div class="conv conv__length">
+      <select id="currency-two">
+        <option value="CL" >CL(Centilit)</option> 
+        <option value="CM^3">CM^3</option> 
+        <option value="DL">DL(Decalit)</option> 
+        <option value="DM^3">DM^3</option> 
+        <option value="KM^3">KM^3</option> 
+        <option value="L"selected>L(Lít)</option>
+        <option value="M^3">M^3</option>
+        <option value="ML">ML(mililit)</option>  
+        <option value="MM^3">MM^3</option>
+        <option value="µL">µL</option>
+
+      </select>
+      <input type="number" id="amount-two" placeholder="0" />
+    </div>
+  </div>
 </div>
 </div>
 

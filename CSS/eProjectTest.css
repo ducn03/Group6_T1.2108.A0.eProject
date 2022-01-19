@@ -168,7 +168,7 @@ div.l
 	/*conversion.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
 
 	.conv {
-		padding: 2px 0px;
+		padding: 15px 0px;
 		display: flex;
 		align-items: center;
 		margin-left: 0%;
@@ -201,8 +201,8 @@ div.l
 	  .swap-rate-container {
 		display: flex;
 		align-items: center;
-		width: 120px;
-		margin-left: 40%;
+		width: 360px;
+		margin-left: 35%;
 	  }
 	  
 	  .rate {
@@ -210,6 +210,7 @@ div.l
 		font-size: 14px;
 		padding: 0 10px;
 		margin-right: 25%;
+		width: 200%;
 	  }
 	  
 	  @media (maz-width: 600px) {
