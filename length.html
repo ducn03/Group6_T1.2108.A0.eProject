@@ -65,92 +65,50 @@
 <h1 class="fontCon">Length</h1>
 <div class="cvstb"> 
 <div>
-  select:<select ng-model="mySelect" class="fl4">
-   <option value="q1">Feet</option>
-   <option value="q2">Inches</option>
-   <option value="q3">Yards</option>
-   <option value="q4">Miles</option>
- </select>
- <div ng-switch="mySelect">
- <div ng-switch-when="q1">
-  <p class="fl1">
-      <label>Feet:</label>
-      <input id="inputFeet" type="number" placeholder="Feet" oninput="LengthConverterft(this.value)" onchange="LengthConverter(this.value)">
-    </p>
-    <div class="fl2">
-       select:&nbsp;&nbsp;<select ng-model="mySelect" class="fl4">
-        <option value="q1">Meters</option>
+  <div class="conv__container conv__form">
+    <div class="conv conv__length">
+      <select id="currency-one">
+        <option value="KM" selected>KM(kilomet)</option>
+        <option value="M">M(mét)</option>
+        <option value="DM">DM(deximet)</option>
+        <option value="CM">CM(centimet)</option>
+        <option value="MM">MM(milimet)</option>
+        <option value="INC">INC(inch)</option>
+        <option value="FT">FT(Feets)</option>
+        <option value="YRD">YRD(yard)</option>
+        <option value="NNM">NNM(nanomet)</option>
+        <option value="μM">μM(micromet)</option>
       </select>
-      <div ng-switch="mySelect" class="fl3">
-      <div ng-switch-when="q1"><p>Meters: <input type="number" id="outputMeters" disabled></p></div>
-      </div>
+      <input type="number" id="amount-one" placeholder="0" value="1" />
     </div>
-    <div hidden>
-     <p>Meters: <span id="outputMeters"></span></p>
+
+    <div class="swap-rate-container">
+      <button class="btn" id="swap">Swap</button>
+      <div class="rate" id="rate"></div>
     </div>
- </p></div>
- <div ng-switch-when="q2"><p>
-    
-  <p class="fl1">
-    <label>Inches:</label>
-    <input id="inputFeet" type="number" placeholder="Inches" oninput="LengthConverterin(this.value)" onchange="LengthConverter(this.value)">
-  </p>
-  <div class="fl2a1">
-    &nbsp;&nbsp;select:<select ng-model="mySelect" class="fl4">
-      <option value="q2">Mm</option>
-    </select>
-    <div ng-switch="mySelect" class="fl3">
-    <div ng-switch-when="q2"><p>Mm: <input  type="number" id="outputMillimetre" disabled></p></div>
+
+    <div class="conv conv__length">
+      <select id="currency-two">
+        <option value="KM">KM(kilomet)</option>
+        <option value="M">M(mét)</option>
+        <option value="DM">DM(deximet)</option>
+        <option value="CM">CM(centimet)</option>
+        <option value="MM" selected>MM(milimet)</option>
+        <option value="INC">INC(inch)</option>
+        <option value="FT">FT(Feets)</option>
+        <option value="YRD">YRD(yard)</option>
+        <option value="NNM">NNM(nanomet)</option>
+        <option value="μM">μM(micromet)</option>
+      </select>
+      <input type="number" id="amount-two" placeholder="0" />
     </div>
-  </div>
-  <div hidden>
-    <p>Mm: <span id="outputMillimetre"></span></p>
   </div>
 
- 
-
- </p></div>
- <div ng-switch-when="q3"><p>
-  <p class="fl1">
-    <label>Yards:</label>
-    <input id="inputFeet" type="number" placeholder="Yards" oninput="LengthConverteryd(this.value)" onchange="LengthConverter(this.value)">
-  </p>
-  <div class="fl2a1">
-    &nbsp;&nbsp;select:<select ng-model="mySelect" class="fl4">
-      <option value="q3">Meter</option>
-    </select>
-    <div ng-switch="mySelect" class="fl3">
-    <div ng-switch-when="q3"><p>Meter: <input type="number" id="outputMeters" disabled></p></div>
-    </div>
-  </div>
-  <div hidden>
-    <p>Meter: <span id="outputMeters"></span></p>
-  </div>
-  
-
- </p></div>
- <div ng-switch-when="q4"><p>
-  <p class="fl1">
-    <label>Miles</label>
-    <input id="inputFeet" type="number" placeholder="Miles" oninput="LengthConvertermile(this.value)" onchange="LengthConverter(this.value)">
-  </p>
-  <div class="fl2a1">
-    &nbsp;&nbsp;select:<select ng-model="mySelect" class="fl4">
-      <option value="q4">Kilometers</option>
-    </select>
-    <div ng-switch="mySelect" class="fl3">
-    <div ng-switch-when="q4"><p>Kilometers: <input type="number" id="outputKilometers" disabled></p></div>
-    </div>
-  </div>
-  <div hidden>
-    <p>Kilometers: <span id="outputKilometers"></span></p> 
-  </div>
- </p></div>
- 
-</div>
 </div>
 </div>
 <br> <br> <br>
+
+
 
 <!--history and information-->
 
