@@ -181,7 +181,159 @@ div.l
         height: 270px;
     } */
     
-    
+    .cvstb
+        {
+            margin-left: 10%;
+            margin-right: 20%;
+            width: 80%;
+            border: 1px solid;
+            padding: 5px;
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+            outline: 1px solid;
+            outline-color: rgba(255, 255, 255, .5);
+            outline-offset: 0px;
+            text-shadow: none;
+            transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+            border-radius: 15px;
+            border-radius: 15px 15px;
+            border-radius: 15px 15px 15px;
+            border-radius: 15px 15px 15px;
+        }
+
+        .conv {
+          padding: 15px 0px;
+          display: flex;
+          align-items: center;
+          margin-left: 0%;
+          }
+          
+          .conv select {
+          padding: 3px 6px 3px 3px;
+          -moz-appearance: none;
+          -webkit-appearance: none;
+          appearance: none;
+          border: 2px solid black;
+          font-size: 10px;
+          background: transparent;
+          background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%20000002%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+          background-position: right 10px top 50%, 0, 0;
+          background-size: 12px auto, 100%;
+          background-repeat: no-repeat;
+          color: black;
+          font-weight: bold;
+          }
+          
+          .conv input {
+          border: 0;
+          background:powderblue;
+          font-size: 13px;
+          text-align: right;
+          color:black;
+          }
+          
+          .swap-rate-container {
+          display: flex;
+          align-items: center;
+          width: 270px;
+          margin-left: 20%;
+          }
+          
+          .rate {
+          color: var(--primary-color);
+          font-size: 10px;
+          padding: 0 10px;
+          margin-right: 25%;
+          width: 200%;
+          }
+          
+          @media (maz-width: 600px) {
+          .conv input {
+            width: 200px;
+          }
+          }
+        
+        .conv__length{
+          margin-left: 10%;
+        }
+        
+        .conv__power{
+          margin-left: 0%;
+        }
+        
+        .conv__time{
+          margin-left: 20%;
+        }
+      
+        button.btn {
+          background-color:white;
+          border-radius: 15px;
+          border: none;
+          color: black;
+          padding: 5px 10px;
+          text-align: center;
+          font:bold 10px "Roboto", sans-serif;
+          margin: 4px;
+          transition: 0.3s;
+          cursor: pointer;
+          }
+          .btn:hover {
+          background-color: white;
+          color: black;
+          border-radius: 50%;
+          }
+
+          button.left {
+            color: white;
+            padding: 20px 20px;
+            font-size: x-small;
+            border: none;
+            width: 20%;
+            background: transparent; outline: none;
+            border: 1px solid;
+            border-radius: 15px;
+            border-radius: 15px 15px;
+            border-radius: 15px 15px 15px;
+            border-radius: 15px 15px 15px;
+            float: left;
+            position: absolute;
+            left: 280px;
+            display: block;
+          }
+          button.left:hover
+          {
+            font-size: smaller;
+          }
+          button.right
+          {
+            color: white;
+            padding: 20px 20px;
+            border: none;
+            width: 30%;
+            background: transparent; outline: none;
+            border: 0 solid;
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+            outline: 1px solid;
+            outline-color: rgba(255, 255, 255, .5);
+            outline-offset: 0px;
+            text-shadow: none;
+            transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+            border-radius: 15px;
+            border-radius: 15px 15px;
+            border-radius: 15px 15px 15px;
+            border-radius: 15px 15px 15px;
+            position: absolute;
+            right: 250px;
+            display: block;
+            font-size: x-small;
+          }
+          button.right:hover
+          {
+            font-size: smaller;
+          }
+          .his1
+          {
+            font-size: x-small;
+          }
   }
 
 
